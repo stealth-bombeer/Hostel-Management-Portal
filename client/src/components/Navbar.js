@@ -41,10 +41,10 @@ const Navbar = () => {
               <Link to="/allot">Allotment-list</Link>
               <Link to="/pass">Pass</Link>
               <Link to="/rules">Hostel Rules</Link>
-              <Link to="/notification">Notification</Link>
+              {/* <Link to="/notification">Notification</Link> */}
 
                {/* <button onClick={handleChat}>Chat</button> */}
-              <Link to="/chatapp">Chat</Link>
+              {/* <Link to="/chatapp">Chat</Link> */}
               <Link to="/Complains">Complaints</Link>
               <button onClick={handleClick}>Log out</button>
             </div>

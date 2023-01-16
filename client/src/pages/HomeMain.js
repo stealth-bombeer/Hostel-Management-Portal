@@ -1,7 +1,7 @@
 import pic1 from "./hostelpics/vjtipic1.jpeg"
 import pic2 from "./hostelpics/vjtipic2.jpeg"
 import pic3 from "./hostelpics/vjtipic3.jpeg"
-
+import { Link } from "react-router-dom";
 
 const HomeMain = () => {
     return (
@@ -23,20 +23,21 @@ So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
 <div className="homecards">
   <div className="homecard1">
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-  <a href="#">
+  <Link to ="/chatapp">
     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
   Chat Room
     </h5>
-  </a>
+    </Link>
+  
   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
   Interactive technology helps create opportunities for communication. It can encourage students to communicate more.
 
   </p>
-  <a
-    href="#"
-    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-  >
+  <Link to ="/chatapp"
+    className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  
     Enter
+   
     <svg
       aria-hidden="true"
       className="w-4 h-4 ml-2 -mr-1"
@@ -50,23 +51,22 @@ So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
         clipRule="evenodd"
       />
     </svg>
-  </a>
+    </Link>
 </div>
 
 </div>
 
 <div className="homecard2">
 <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-  <a href="#">
+ <Link to ="/">
     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Room selection
     </h5>
-  </a>
+  </Link>
   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
     Choose your room and roommates SY onwards
   </p>
-  <a
-    href="#"
+  <Link to ="/"
     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
   >
     Enter
@@ -83,7 +83,7 @@ So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
         clipRule="evenodd"
       />
     </svg>
-  </a>
+</Link>
 </div>
 </div>
 
@@ -91,16 +91,15 @@ So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
 
 <div className="homecard3">
 <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-  <a href="#">
+  <Link to="/notification">
     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Notifications
     </h5>
-  </a>
+  </Link>
   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
     get notifications of upcoming events 
   </p>
-  <a
-    href="#"
+  <Link to="/notification"
     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
   >
     Read more
@@ -117,7 +116,7 @@ So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
         clipRule="evenodd"
       />
     </svg>
-  </a>
+ </Link>
 </div>
 </div>
 </div>          

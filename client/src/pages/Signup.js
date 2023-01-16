@@ -331,7 +331,7 @@ console.log(name);
           required=""
         />
       </div>
-      {/* <div className="mb-3">
+      <div className="mb-3">
         <div className="form-file custom-file">
           <label
             htmlFor="image"
@@ -347,9 +347,9 @@ console.log(name);
             placeholder="Choose Image"
             required=""
           />
-          /<label for="image" class="btn btn-primary">Browse</label>/
+          <label for="image" class="btn btn-primary">Browse</label>/
         </div>
-      </div> */}
+      </div>
       <div className="flex items-start mb-6">
         <div className="flex items-center h-5">
           <input
@@ -371,7 +371,7 @@ console.log(name);
           >
             terms and conditions
           </a>
-          .
+          
         </label>
       </div>
       <button

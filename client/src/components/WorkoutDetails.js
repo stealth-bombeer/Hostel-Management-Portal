@@ -29,7 +29,7 @@ const WorkoutDetails = ({ workout }) => {
   return (
     <div className="workout-details">
       <h4>{workout.title}</h4>
-      <p><strong>Roome Mate 1 (kg): </strong>{workout.Name1}</p>
+      <p><strong>Roome Mate 1 : </strong>{workout.Name1}</p>
       <p><strong>Roome Mate 2 </strong>{workout.Name2}</p>
       <p><strong>Roome Mate 3 </strong>{workout.Name3}</p>
       <p><strong>Room No. </strong>{workout.RoomNo}</p>

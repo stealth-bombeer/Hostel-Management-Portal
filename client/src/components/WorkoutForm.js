@@ -1,4 +1,4 @@
-import { useState,history } from "react";
+import { useState, history } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -41,8 +41,8 @@ const WorkoutForm = () => {
 
     if (!response.ok) {
       setError(json.error);
-      console.log("Rohan")
-      history.push("/chat")
+      console.log("Rohan");
+      history.push("/chat");
       setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
@@ -56,59 +56,61 @@ const WorkoutForm = () => {
     }
   };
   console.log(Name1);
-  return (<>
-     <form className="create" onSubmit={handleSubmit}>
-      <h3>Add RoomMates</h3>
+  return (
+    <>
+      <form className="create" onSubmit={handleSubmit}>
+        <h3>Add RoomMates</h3>
 
-      <label>Room Mate-1:</label>
-      <input
-        type="text"
-        onChange={(e) => setName1(e.target.value)}
-        value={Name1}
-        className={emptyFields.includes("Name1") ? "error" : ""}
-      />
+        <label>Room Mate-1:</label>
+        <input
+          type="text"
+          onChange={(e) => setName1(e.target.value)}
+          value={Name1}
+          className={emptyFields.includes("Name1") ? "error" : ""}
+        />
 
-      <label>Room Mate-2:</label>
-      <input
-        type="text"
-        onChange={(e) => setName2(e.target.value)}
-        value={Name2}
-        className={emptyFields.includes("Name2") ? "error" : ""}
-      />
+        <label>Room Mate-2:</label>
+        <input
+          type="text"
+          onChange={(e) => setName2(e.target.value)}
+          value={Name2}
+          className={emptyFields.includes("Name2") ? "error" : ""}
+        />
 
-      <label>Room Mate-3:</label>
-      <input
-        type="text"
-        onChange={(e) => setName3(e.target.value)}
-        value={Name3}
-        className={emptyFields.includes("Name3") ? "error" : ""}
-      />
-
-      <div className="relative w-full lg:max-w-sm">
-        Room:no
-        <select
-          className={emptyFields.includes("RoomNo") ? "error" : ""}
-          value={RoomNo}
-          onChange={handleChange}
-        >
-          <option value= "1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-        </select>
-      </div>
-
-      <button>Add Workout</button>
-      {error && <div className="error">{error}</div>}
-    </form>
-    
+        <label>Room Mate-3:</label>
+        <input
+          type="text"
+          onChange={(e) => setName3(e.target.value)}
+          value={Name3}
+          className={emptyFields.includes("Name3") ? "error" : ""}
+        />
+        <div classname="pl-8">
+          <div className="relative w-full lg:max-w-sm">
+            Room:no
+            <select
+              className={emptyFields.includes("RoomNo") ? "error" : ""}
+              value={RoomNo}
+              onChange={handleChange}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+          </div>
+        </div>
+        <div className="pb-8">
+          <button>Add Workout</button>
+          {error && <div className="error">{error}</div>}
+        </div>
+      </form>
     </>
   );
 };

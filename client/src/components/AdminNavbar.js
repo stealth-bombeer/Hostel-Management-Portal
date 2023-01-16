@@ -21,7 +21,9 @@ const Navbar2 = () => {
             <div>
               <span>{admin.email}</span>
               <button onClick={handleClick}>Log out</button>
+              <Link to="/admin/mer">Merit-List</Link>
             </div>
+            
           )}
           {!admin && (
             <div>

@@ -1,15 +1,23 @@
 import girls_fees from './fee_qr/girls_fees.jpeg.jpeg'
 import boys_fees from './fee_qr/boys_fees.jpeg.jpeg'
+import { useAuthContext } from "../hooks/useAuthContext"
+
 const Fees = () => {
-    return (<>
-<div className='feecard'>
+  const { user } = useAuthContext();
+  console.log(user);
+    return (
+    <>
+
+
+    <div className='feecard'>
+
        <div >
         
         <h3 className=" fees_card mrp text-xl font-semibold tracking-tight text-gray-900 dark:text-white ">Hostel fees </h3> 
          <div className='fees_card'>
          
            
-        <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mt-20">
+         { user.gender==='M'&& <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mt-20">
           <a href="#">
             <img className="p-8 rounded-t-lg" src={boys_fees} alt="product image" />
           </a>
@@ -23,13 +31,16 @@ const Fees = () => {
               <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">paid</a>
             </div>
           </div>
-          <div>
+         </div>
+         }
+         
+         
 
-          </div>
+      
+     
 
-
-
-          {/* <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+{ user.gender==='F' &&
+          <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
           <a href="#">
             <img className="p-8 rounded-t-lg" src={girls_fees} alt="product image" />
           </a>
@@ -43,12 +54,14 @@ const Fees = () => {
               <a href="#" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">paid</a>
             </div>
           </div>
-        </div> */}
         </div>
-        </div>
-        </div>
-</div>
+}
 
+        </div>
+        </div>
+      
+        </div>
+    
        </> 
       );
     }

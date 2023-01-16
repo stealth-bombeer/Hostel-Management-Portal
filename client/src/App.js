@@ -36,7 +36,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <Home /> : <Navigate to="/login" />}
+              element={user ? <HomeMain/> : <Navigate to="/login" />}
             />
             <Route
               path="/login"
@@ -54,7 +54,7 @@ function App() {
             <Route path="/allot" element={<AllotmentList />} />
             <Route
               path="/home"
-              element={user ? <HomeMain /> : <Navigate to="/login" />}
+              element={user ? <Home /> : <Navigate to="/login" />}
             />
             <Route
               path="/chatapp"
@@ -75,7 +75,7 @@ function App() {
               path="/notification"
               element={user ? <Notification /> : <Navigate to="/login" />}
             />
-            <Route path="/admin/mer" element={<Mer />} />
+            <Route path="/admin/mer" element={admin ? <Mer /> : <Navigate to="/adminlogin" />} />
 
             <Route
               path="/rules"

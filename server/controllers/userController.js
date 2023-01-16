@@ -15,8 +15,10 @@ const loginUser = async (req, res) => {
     // create a token
     const token = createToken(user._id);
     const gender = user.gender;
+    const year=user.year
     console.log(gender)
-    res.status(200).json({ gender, email, token });
+    console.log(year)
+    res.status(200).json({year,gender, email, token });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 
 const AllotmentList = () => {
-  let [bys, setBys] = useState([]);
+  let [bys, setBys] = useState([""]);
   let [isSetBys, setSetBys] = useState(false);
   let [gls,setGls] = useState([]);
   let [isSetGls, setSetGls] = useState(false);
   let [isBoys, setisBoys] = useState(false);
   let [isGirls, setisGirls] = useState(false);
-  // const data = [
-  //   { name: "Anom", age: 19, gender: "Male" },
-  //   { name: "Megha", age: 19, gender: "Female" },
-  //   { name: "Subham", age: 25, gender: "Male" },
-  // ];
+
   const [students, setstudents] = useState([]);
   const [combinedGirls, setCombinedGirls] = useState([]);
   const [combinedBoys, setCombinedBoys] = useState([]);
@@ -26,7 +22,6 @@ const AllotmentList = () => {
       },
     })
       .then((res) => {
-        // console.log(res.json());
         return res.json();
       })
       .then((data) => {
@@ -34,39 +29,30 @@ const AllotmentList = () => {
         setstudents([...data]);
         console.log(students);
 
-        //  for(let i=0;i<students.length;i++)
-        //  {
-        //     if(students[i].gender==='M'&& students[i].address!=="Mumbai")
-        //     {
-        //         setCombinedBoys=[...students[i]]
-        //     }
-        //     if(students[i].gender==='F'&& students[i].address!=="Mumbai")
-        //     {
-        //         setCombinedGirls=[...students[i]]
-        //     }
-        //  }
+        
         let st = [...data];
         console.log(st);
-        setBys( [
+         const st2=[
           ...st.filter((student) => {
             return student.gender == "M" && student.address != "Mumbai";
           }),
-        ]);
+        ];
         setSetBys(true);
-
-        console.log(bys);
+        console.log(st2);
+        console.log(st)
         const st1=[
           ...st.filter((student) => {
             return student.gender == "F" && student.address != "Mumbai";
           }),
         ];
+        console.log(st1);
         setGls (st1);
+
         setSetGls(true);
-        setBys([...bys.sort((a, b) => a.merit - b.merit)]);
-        setisBoys(true);
+        setBys([...st2.sort((a, b) => a.merit - b.merit)]);        setisBoys(true);
         setGls([...st1.sort((a, b) => a.merit - b.merit)]);
         console.log(gls);
-        console.log(students[0]);
+        console.log(students);
       });
   }, []);
   return (

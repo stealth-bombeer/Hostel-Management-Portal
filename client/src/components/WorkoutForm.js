@@ -29,7 +29,7 @@ const WorkoutForm = () => {
 
     const details = { Name1, Name2, Name3, RoomNo };
 
-    const response = await fetch("/api/workouts", {
+    const response = await fetch("/api/workouts/home", {
       method: "POST",
       body: JSON.stringify(details),
       headers: {

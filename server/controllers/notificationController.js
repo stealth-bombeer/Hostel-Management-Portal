@@ -4,9 +4,9 @@ const Announcement = require('../models/announcementModel')
 
 // get all workouts
 const getannouncement = async (req, res) => {
-  const _id = req._id
+  //const _id = req._id
 
-  const ann = await Announcement.find({_id}).sort({createdAt: -1})
+  const ann = await Announcement.find({}).sort({createdAt: -1})
 
   res.status(200).json(ann)
 }

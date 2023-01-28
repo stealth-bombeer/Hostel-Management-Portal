@@ -8,15 +8,43 @@
   <a href="https://github.com/stealth-bombeer/Hostel-Management-Portal/issues"><img alt="GitHub contributors" src="https://img.shields.io/github/issues/stealth-bombeer/Hostel-Management-Portal"></a>
     <img src="https://komarev.com/ghpvc/?username=Hostel-Management-Portal&label=Project%20views&color=0e75b6&style=flat"
     alt="adam-pw" /> 
-</div> 
+</div>
 
+<div align="center">
+<table>
+  <tr>
+    <td>
+ Vjti Hostel Portal is a Web-Application for all hostel related processes 
+<br><br>
+      The <i>key features</i>:
+      <ul>
+<li> to simplify the complex process of application to hostel and automate the allotment process
+<li> A single platform for all hostel students and authorities
+      </ul>
+    </td>
+  </tr>
+  </table>
+  </div>
+  
+  ![Home-Page](https://user-images.githubusercontent.com/96366867/215251481-de6bcea8-bcf4-489f-93f5-107951b8b775.jpeg)
+ 
 ## Features
 
-- User can join a chat using Room-Pin
-- All the people in the same room can view and send message
-- Live previews
-
-
+ **Student-Side** 👨‍🎓
+- Automated FY-room allocation using data structres to avoid tedious-time consuming process
+- Display Merit-List eligible for the hostel
+- Sy-TY-4Y Room allocation wherein students can choose their own roommates and rooms
+- Raise greivances by filling a form which automates email to the admin
+- Digitalising Gate Pass for students and sending a email to the security
+- Receiving notifications sent by the admin 
+- a One-to-One/Group chat with the hostelites
+- QR-Code Scanner for paying Hostel Fees
+ 
+ **Admin-side**👨‍💻
+- Post notifications to the hostelites
+- Approve student application for the hostels
+- Attendance-System using face recognition system 
+ 
 
 ## 🛠️ Project Setup
 

@@ -22,6 +22,7 @@ import Al from "./components/Al";
 import Notification from "./pages/Notification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
+import Blocks from "./pages/Blocks";
 
 const socket = io.connect("http://localhost:4000");
 
@@ -70,6 +71,10 @@ function App() {
             <Route
               path="/pass"
               element={user ? <Pass /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/blocks"
+              element={user ? <Blocks /> : <Navigate to="/login" />}
             />
             <Route
               path="/notification"

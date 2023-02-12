@@ -39,6 +39,7 @@ const Navbar = () => {
               <Link to="/allot">Allotment-list</Link>
               {user.year!= 2022 && <Link to="/home">SY</Link>}
               <Link to="/pass">Pass</Link>
+              <Link to="/blocks">Blocks</Link>
               <Link to="/rules">Hostel Rules</Link>
               {/* <Link to="/notification">Notification</Link> */}
 

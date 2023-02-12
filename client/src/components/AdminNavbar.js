@@ -14,7 +14,7 @@ const Navbar2 = () => {
     <header>
       <div className="container">
         <Link to="/admin/ad">
-          <h1>Workout Buddy</h1>
+          <h1>VJTI Hostel Portal-Admin</h1>
         </Link>
         <nav>
           {admin && (

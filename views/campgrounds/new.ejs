@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate.ejs')%> 
+    <div class="row">
+       <h1 class="text-center">New Campground</h1>
+        <div class="col-6 offset-3">
+        <form action="/campgrounds" method="post" novalidate class="row g-3 needs-validation" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label  for="title" class="form-label">Title</label>
+                <input class="form-control"
+                 type="text" id="title" name="campground[title]" placeholder="Title" required>
+                 <div class="valid-feedback">valid!</div>
+            </div>
+            
+            <div class="mb-3">
+                <label   for="location" class="form-label">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" placeholder="Location" required>
+                <div class="valid-feedback">
+                    valid!
+                 </div>
+            </div>
+            
+            <div class="mb-3">
+                <label   for="price" class="form-label">Campground Price</label>
+            <div class="input-group">
+                <span class="input-group-text" id="price-label">Rs.</span>
+                <input class="form-control" type="text" id="price" placeholder="0.00" name="campground[price]" aria-label="price" aria-describedly="basic-addon1" required>
+            </div>
+            <div class="valid-feedback">
+                valid!
+             </div>
+            </div>
+            
+            <div class="mb-3">
+                <label  for="description" class="form-label">Description</label>
+                <textarea class="form-control" type="text" id="description" name="campground[description]" required></textarea>
+                <div class="valid-feedback">
+                    valid!
+                </div>
+            </div>
+
+            <div class="mb-3">
+                
+                <div class="form-file custom-file">
+                    <label class="form-file-text custom-file-label" for="image">Choose Image(s)...</label>
+                    <input type="file" style="visibility:hidden;" class="form-file-input" id="image" name="image" multiple>
+                    <label class="form-file-button" for="image">Browse</label>
+                    <!--<label for="image" class="btn btn-primary">Browse</label>-->
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-success">Add Campground</button>
+            </div>
+        </form>
+        <a href="/campgrounds">All Campgrounds</a>
+    
+       </div>
+    </div>
+
+    

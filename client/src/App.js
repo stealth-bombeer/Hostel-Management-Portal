@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Mer from "./pages/Mer";
 import Navbar from "./components/Navbar";
 import Fees from "./context/Fees";
@@ -48,6 +50,14 @@ function App() {
             <Route
               path="/register"
               element={!user ? <Register /> : <Navigate to="/" />}
+            />
+             <Route
+              path="/forgotPassword"
+              element={!user ? <ForgotPassword/> : <Navigate to="/" />}
+            />
+            <Route
+              path="/resetPassword/:newToken"
+              element={!user ? <ResetPassword/> : <Navigate to="/" />}
             />
             <Route
               path="/signup"

@@ -2,7 +2,7 @@ const express = require('express')
 const { getannouncement } = require('../controllers/notificationController')
 
 // controller functions
-const { loginUser,registerUser,signupUser} = require('../controllers/userController')
+const { loginUser,registerUser,signupUser,forgotPassword,ResetPassword} = require('../controllers/userController')
 
 const router = express.Router()
 const cloudinary=require('cloudinary').v2;
@@ -19,7 +19,8 @@ cloudinary.config({
 router.post('/login', loginUser)
 
 // signup route
-
+router.post('/forgotPassword',forgotPassword)
+router.put('/resetPassword/:newToken',ResetPassword)
 router.post('/register',registerUser)
 router.post('/signup',signupUser)
 

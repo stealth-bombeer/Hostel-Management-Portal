@@ -24,6 +24,7 @@ import Notification from "./pages/Notification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
+import PdfUploader from "./Form";
 
 const socket = io.connect("http://localhost:4000");
 
@@ -106,6 +107,7 @@ function App() {
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
+            <Route path="/verify" element={<PdfUploader />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

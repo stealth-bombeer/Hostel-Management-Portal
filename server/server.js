@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const workoutRoutes = require("./routes/workouts");
 const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
+const docRoutes = require("./routes/docRoutes")
 
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -41,7 +42,7 @@ app.use((req, res, next) => {
 const server = http.createServer(app);
 
 // routes
-
+app.use('/', docRoutes);
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);

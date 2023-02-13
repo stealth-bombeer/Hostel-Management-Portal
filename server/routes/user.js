@@ -2,7 +2,7 @@ const express = require('express')
 const { getannouncement } = require('../controllers/notificationController')
 
 // controller functions
-const { loginUser,registerUser} = require('../controllers/userController')
+const { loginUser,registerUser,signupUser} = require('../controllers/userController')
 
 const router = express.Router()
 const cloudinary=require('cloudinary').v2;
@@ -21,7 +21,7 @@ router.post('/login', loginUser)
 // signup route
 
 router.post('/register',registerUser)
-
+router.post('/signup',signupUser)
 
 
 router.get('/notification', getannouncement)

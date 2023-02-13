@@ -14,9 +14,7 @@ const Navbar = () => {
   console.log(user);
   return (
     <header>
-      
       <div className="container">
-        
         <a href="#" className="flex items-center">
           <img
             src="https://img.collegepravesh.com/2016/01/VJTI-Mumbai-Logo.png"
@@ -37,8 +35,9 @@ const Navbar = () => {
               <span>{user.year}</span>
               <Link to="/fees">FeePayment</Link>
               <Link to="/allot">Allotment-list</Link>
-              {user.year!= 2022 && <Link to="/home">SY</Link>}
+              {user.year != 2022 && <Link to="/home">SY</Link>}
               <Link to="/pass">Pass</Link>
+              <Link to="/blocks">Blocks</Link>
               <Link to="/rules">Hostel Rules</Link>
               {/* <Link to="/notification">Notification</Link> */}
 
@@ -52,7 +51,7 @@ const Navbar = () => {
           {!user && (
             <div>
               <Link to="/login">Login</Link>
-              <Link to="/signup">Signup</Link>
+              <Link to="/register">Register</Link>
               <Link to="/adminlogin">Admin-Login</Link>
             </div>
           )}

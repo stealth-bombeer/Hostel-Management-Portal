@@ -1,10 +1,10 @@
 const express = require("express");
 const {
-  getNames,
+  getBlock,
 
-  createName,
+  createBlock,
 
-  updateName,
+  //updateName,
 } = require("../controllers/workoutController");
 const requireAuth = require("../middleware/requireAuth");
 
@@ -14,18 +14,18 @@ const router = express.Router();
 router.use(requireAuth);
 
 // GET all workouts
-router.get("/home", getNames);
+router.get("/home", getBlock);
 
 //GET a single workout
 // router.get('/:id', getWorkout)
 
 // POST a new workout
-router.post("/home", createName);
+router.post("/home", createBlock);
 
 // DELETE a workout
 // router.delete('/:id', deleteWorkout)
 
 // UPDATE a workout
-router.patch("/home:id", updateName);
+//router.patch("/home:id", updateName);
 
 module.exports = router;

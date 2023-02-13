@@ -119,19 +119,70 @@ const registerUser = async (req, res) => {
 
     // create a token
     // const token = createToken(user._id);
-    // console.log(token);
-    // res.status(200).json(1);
-    res.status(200).json({
-      name,
-      gender,
-      course,
-    });
+
+    res
+      .status(200).json({name})
+      // .json({
+      //   name,
+      //   number,
+      //   branch,
+      //   category,
+      //   year,
+      //   merit,
+      //   address,
+      //   gender,
+      //   email,
+      //   password,
+      //   token,
+      // });
   } catch (error) {
-    console.log("error inside in catch usercontroller", error.message);
+    console.log("error inside in catch usercontroller register user ", error.message);
     res.status(400).json({ error: error.message });
   }
 
   // console.log(resultUrl)
 };
 
-module.exports = { registerUser, loginUser };
+
+const signupUser = async (req, res) => {
+  const {
+    name,
+    number,
+    branch,
+    category,
+    year,
+    merit,
+    address,
+    gender,
+    email,
+    password,
+  } = req.body;
+
+  try {
+    const user = await User.signup(
+      name,
+      number,
+      branch,
+      category,
+      year,
+      merit,
+      address,
+      gender,
+      email,
+      password
+    );
+    // create a token
+    // const token = createToken(user._id);
+
+    res
+      .status(200)
+      .json({
+        name
+      });
+  } catch (error) {
+    console.log("inside signup user catch",error.message)
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { signupUser, registerUser, loginUser };

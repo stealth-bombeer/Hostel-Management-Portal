@@ -9,6 +9,7 @@ import AdminNavbar from "./components/AdminNavbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Signup from "./pages/Signup";
 import Mer from "./pages/Mer";
 import Navbar from "./components/Navbar";
 import Fees from "./context/Fees";
@@ -22,6 +23,7 @@ import Al from "./components/Al";
 import Notification from "./pages/Notification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
+import Blocks from "./pages/Blocks";
 
 const socket = io.connect("http://localhost:4000");
 
@@ -36,7 +38,7 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <HomeMain/> : <Navigate to="/login" />}
+              element={user ? <HomeMain /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"
@@ -44,7 +46,11 @@ function App() {
             />
             <Route
               path="/register"
-              element={!user ? <Register/> : <Navigate to="/" />}
+              element={!user ? <Register /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/signup"
+              element={admin ? <Signup /> : <Navigate to="/login" />}
             />
 
             <Route
@@ -72,10 +78,17 @@ function App() {
               element={user ? <Pass /> : <Navigate to="/login" />}
             />
             <Route
+              path="/blocks"
+              element={user ? <Blocks /> : <Navigate to="/login" />}
+            />
+            <Route
               path="/notification"
               element={user ? <Notification /> : <Navigate to="/login" />}
             />
-            <Route path="/admin/mer" element={admin ? <Mer /> : <Navigate to="/adminlogin" />} />
+            <Route
+              path="/admin/mer"
+              element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
+            />
 
             <Route
               path="/rules"

@@ -86,6 +86,7 @@ export const useRegister = () => {
     if (!response.ok) {
       setIsLoading(false);
       setError(json.error);
+      {alert(json.error)}
       console.log("error inside usesignup");
     }
     if (response.ok) {

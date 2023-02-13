@@ -45,7 +45,7 @@ function App() {
             />
             <Route
               path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
+              element={admin ? <Signup /> : <Navigate to="/login" />}
             />
 
             <Route

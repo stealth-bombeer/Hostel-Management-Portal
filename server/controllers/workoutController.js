@@ -1,14 +1,31 @@
-const Name = require('../models/workoutModel')
+const Blockfloor = require('../models/blockSchema')
 const mongoose = require('mongoose')
 
 // get all Names
-const getNames = async (req, res) => {
-  const id = req.id
+// const getBlock = async (req, res) => {
+//   const BlockNo = req.BlockNo
+//   const FloorNo = req.FloorNo
 
-  const names = await Name.find({id}).sort({createdAt: -1})
+//   const names = await blockfloor.find({BlockNo,FloorNo}).sort({createdAt: -1})
+
+//   res.status(200).json(names)
+// }
+const getBlock = async (req, res) => {
+  // const BlockNo = req.query.BlockNo
+  // const FloorNo = req.query.FloorNo
+  // console.log(req.headers.BlockNo);
+  const id=req.id
+
+  const names = await Blockfloor.find({id}).sort({createdAt: 1})
 
   res.status(200).json(names)
+  // console.log(req.headers.BlockNo);
+  // const { BlockNo } = req.headers;
+  // const rank = await blockfloor.findOne({ BlockNo })
+  // console.log(rank);
+  // return res.json({ rank });
 }
+
 
 // get a single workout
 // const getWorkout = async (req, res) => {
@@ -29,26 +46,26 @@ const getNames = async (req, res) => {
 
 
 // create new workout
-const createName = async (req, res) => {
-  const {Name1,Name2,Name3,RoomNo} = req.body
+const createBlock = async (req, res) => {
+  const {BlockNo,FloorNo,Email,RoomNo} = req.body
 
-  let emptyFields = []
+  // let emptyFields = []
 
-  if(!Name1) {
-    emptyFields.push('Name1')
-  }
-  if(!Name2) {
-    emptyFields.push('Name2')
-  }
-  if(!Name3) {
-    emptyFields.push('Name3')
-  }
-  if(!RoomNo) {
-    emptyFields.push('Name3')
-  }
-  if(emptyFields.length > 0) {
-    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
-  }
+  // if(!Name1) {
+  //   emptyFields.push('Name1')
+  // }
+  // if(!Name2) {
+  //   emptyFields.push('Name2')
+  // }
+  // if(!Name3) {
+  //   emptyFields.push('Name3')
+  // }
+  // if(!RoomNo) {
+  //   emptyFields.push('Name3')
+  // }
+  // if(emptyFields.length > 0) {
+  //   return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+  // }
 
   // add doc to db
   try {
@@ -74,8 +91,13 @@ const createName = async (req, res) => {
     //   throw Error('Room already in use')
     // }
     // const user_id = req.user._id
-    const name = await Name.create({Name1,Name2,Name3,RoomNo})
-    res.status(200).json(name)
+    // const b = await Blockfloor.create({BlockNo,FloorNo})
+    // res.status(200).json(b)
+    const b =await Blockfloor.updateOne(
+      { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo : RoomNo },
+      { $push: { Students: { Name: Email } } }
+    );
+    res.status(200).json(b)
   } catch (error) {
     if(error.code===11000)
    {
@@ -109,29 +131,30 @@ const createName = async (req, res) => {
 // }
 
 // update a workout
-const updateName = async (req, res) => {
-  const { id } = req.params
+// const updateName = async (req, res) => {
+//   const { id } = req.params
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({error: 'No such workout'})
-  }
+//   if (!mongoose.Types.ObjectId.isValid(id)) {
+//     return res.status(404).json({error: 'No such workout'})
+//   }
 
-  const name = await Workout.findOneAndUpdate({_id: id}, {
-    ...req.body
-  })
+//   const name = await Workout.findOneAndUpdate({_id: id}, {
+//     ...req.body
+//   })
 
-  if (!name) {
-    return res.status(400).json({error: 'No such workout'})
-  }
+//   if (!name) {
+//     return res.status(400).json({error: 'No such workout'})
+//   }
 
-  res.status(200).json(name)
-}
+//   res.status(200).json(name)
+// }
 
 
 module.exports = {
-  getNames,
+  getBlock,
   
-  createName,
+  // createName,
   
-  updateName
+  // updateName
+  createBlock
 }

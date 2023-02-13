@@ -4,7 +4,7 @@ const validator = require("validator");
 // name,number,branch,category,year,merit,address,gender,email,password
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const registerSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -113,7 +113,7 @@ const userSchema = new Schema({
 });
 
 // static signup method
-userSchema.statics.signup= async function ({
+registerSchema.statics.register= async function ({
   name,course,category,semester,merit,academicYear_institute,academicYear_hostel,pname,address,stu_Number,parent_Number,email,gname,gaurdian_address,gaurdian_Number,gender,aadhar,allotment,sundertaking,pundertaking
 }
 ) {
@@ -162,31 +162,12 @@ userSchema.statics.signup= async function ({
   // const salt = await bcrypt.genSalt(10);
   // const hash = await bcrypt.hash(password, salt);
 
-  const user = await this.create({
+  const register = await this.create({
     name,course,category,semester,merit,academicYear_institute,academicYear_hostel,pname,address,stu_Number,parent_Number,email,gname,gaurdian_address,gaurdian_Number,gender,aadhar,allotment,sundertaking,pundertaking
   })
 
-  return user;
+  return register;
 };
 
-// static login method
-userSchema.statics.login = async function (email, password) {
-  if (!email || !password) {
-    throw Error("All fields must be filled");
-  }
-
-  const user = await this.findOne({ email });
-  if (!user) {
-    throw Error("Incorrect email");
-  }
-
-  const match = await bcrypt.compare(password, user.password);
-  if (!match) {
-    throw Error("Incorrect password");
-  }
-
-  return user;
-};
-
-const User = new mongoose.model("User", userSchema);
-module.exports = User;
+const Register = new mongoose.model("register", registerSchema);
+module.exports = Register;

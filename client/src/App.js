@@ -8,7 +8,7 @@ import AdminSignup from "./pages/AdminSignup";
 import AdminNavbar from "./components/AdminNavbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Register from "./pages/Register";
 import Mer from "./pages/Mer";
 import Navbar from "./components/Navbar";
 import Fees from "./context/Fees";
@@ -43,8 +43,8 @@ function App() {
               element={!user ? <Login /> : <Navigate to="/" />}
             />
             <Route
-              path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
+              path="/register"
+              element={!user ? <Register/> : <Navigate to="/" />}
             />
 
             <Route

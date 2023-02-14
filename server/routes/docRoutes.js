@@ -45,6 +45,20 @@ router.post("/api/submitAccepted", async (req, res) => {
     }
 });
 
+
+router.delete('/api/delete/:id', async (req, res) => {
+    try {
+        const deletedDoc = await register.findByIdAndDelete(req.params.id);
+        if (!deletedDoc) {
+            return res.status(404).json({ error: 'Document not found' });
+        }
+        res.status(200).json({ message: 'Document deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ error: 'An error occurred while deleting the document' });
+    }
+});
+
+
 router.post("/api/submitRejected", upload.single("pdf"), async (req, res) => {
 
     try {

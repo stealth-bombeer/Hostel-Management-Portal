@@ -239,6 +239,9 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  alloted: {
+    type:String,
+  }
 });
 
 // static signup method

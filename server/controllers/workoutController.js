@@ -1,4 +1,5 @@
 const Blockfloor = require('../models/blockSchema')
+const User = require("../models/userModel");
 const Complain = require('../models/complainModel')
 
 const mongoose = require('mongoose')
@@ -50,55 +51,19 @@ const getBlock = async (req, res) => {
 // create new workout
 const createBlock = async (req, res) => {
   const {BlockNo,FloorNo,Email,RoomNo} = req.body
-
-  // let emptyFields = []
-
-  // if(!Name1) {
-  //   emptyFields.push('Name1')
-  // }
-  // if(!Name2) {
-  //   emptyFields.push('Name2')
-  // }
-  // if(!Name3) {
-  //   emptyFields.push('Name3')
-  // }
-  // if(!RoomNo) {
-  //   emptyFields.push('Name3')
-  // }
-  // if(emptyFields.length > 0) {
-  //   return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
-  // }
-
-  // add doc to db
+  
   try {
     
-    // const exists1 = await this.findOne({Name1})
-
-    // if (exists1) {
-    //   throw Error('Name already in use')
-    // }
-    // const exists2 = await this.findOne({Name2})
-  
-    // if (exists2) {
-    //   throw Error('Name already in use')
-    // }
-    // const exists3 = await this.findOne({Name3})
-  
-    // if (exists3) {
-    //   throw Error('Name already in use')
-    // }
-    // const exists4 = await this.findOne({RoomNo})
-  
-    // if (exists4) {
-    //   throw Error('Room already in use')
-    // }
-    // const user_id = req.user._id
-    // const b = await Blockfloor.create({BlockNo,FloorNo})
-    // res.status(200).json(b)
+    
     const b =await Blockfloor.updateOne(
       { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo : RoomNo },
       { $push: { Students: { Name: Email } } }
     );
+    const c =await User.updateOne(
+      { name: Email },
+      { $set: {alloted:"1"} }
+    );
+    console.log(c,"Alloted")
     res.status(200).json(b)
   } catch (error) {
     if(error.code===11000)
@@ -112,6 +77,31 @@ const createBlock = async (req, res) => {
    }
 
     
+  }
+}
+
+const createAlloted = async (req, res) => {
+  const {Email} = req.body
+  console.log(req.body,"Inside");
+ 
+  try {
+    console.log("Hiiii")
+    const b =await User.updateOne(
+      { name: Email },
+      { $set: {alloted:"1"} }
+    );
+    res.status(200).json(b)
+    console.log("Hiiii")
+  } catch (error) {
+    if(error.code===11000)
+   {
+     console.log("Hi")
+     res.status(400).json({error});
+   }
+   else{
+     console.log("vuv")
+    res.status(400).json({error: error.message})
+   }
   }
 }
 
@@ -196,5 +186,6 @@ module.exports = {
   
   // updateName
   createBlock,
-  createcomplain
+  createcomplain,
+  createAlloted
 }

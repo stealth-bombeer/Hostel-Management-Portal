@@ -27,7 +27,8 @@ const loginUser = async (req, res) => {
     const year = user.year;
     const name = user.name;
     const number = user.number;
-    res.status(200).json({ name,number,year, gender, email, token });
+    const alloted= user.alloted;
+    res.status(200).json({ name,number,year, gender, email, token, alloted });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

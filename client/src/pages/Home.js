@@ -12,7 +12,7 @@ const Home = () => {
   const [x,setX] = useState(0);
   const [FloorNo, setFloorNo] = useState(" ");
   const [RoomNo, setRoomNo] = useState(" ");
-  const [Email, setEmail] = useState(" ");
+  // const [Email, setEmail] = useState(" ");
   const[temp,setTemp]=useState(false);
   const [rm,setRm]=useState([]);
   const[loading,setLoading]=useState(true);
@@ -38,11 +38,13 @@ const Home = () => {
   // },[])
   const handleSelect=async(e) =>{
       console.log(RoomNo)
-      setEmail(user.email)
+      const Email=user.name
+      //const alloted =1
       const a = { BlockNo,FloorNo,Email,RoomNo };
+      //const b= {Email,alloted}
 
     const response = await fetch("/api/workouts/home", {
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify(a),
       headers: {
         "Content-Type": "application/json",
@@ -55,16 +57,33 @@ const Home = () => {
     if (response.ok) {
       console.log("Hii")
     }
+
+    // const resp = await fetch("/api/workouts/home", {
+    //   method: "POST",
+    //   body: JSON.stringify(b),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: `Bearer ${user.token}`,
+    //   },
+    // });
+    // const json1 = await resp.json1();
+
+   
+    // if (response.ok) {
+    //   console.log("Hii")
+    // }
   }
   const handleSubmit = async (e) => {
     
     e.preventDefault();
 
     console.log("hi")
+    console.log(user)
     console.log(BlockNo,FloorNo)
+    console.log(user.allocated)
     setRm([
       ...dat.filter((student) => {
-        return student.BlockNo === BlockNo && student.FloorNo == FloorNo&&student.Students.length>=0;
+        return student.BlockNo === BlockNo && student.FloorNo == FloorNo&&student.Students.length>=0 &&user.alloted!=="1";
       }),
     ]);
     setTimeout(() => {

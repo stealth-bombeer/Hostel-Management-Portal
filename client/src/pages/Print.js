@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
-
+import "./print.css";
 const Print = () => {
   const [complains, setComplains] = useState("");
   const [error, setError] = useState("");
@@ -34,13 +34,13 @@ const Print = () => {
         <div class="container">
           <div class="row">
             <div class="col-md-12">
-              <button onClick={handlePrint} className="print__button">
+              {/* <button onClick={handlePrint} className="print__button">
                 {" "}
                 Print{" "}
-              </button>
+              </button> */}
               <div ref={componentRef} className="card">
                 <div class="float__start">
-                  <h3 class="card-title mb-0">Information</h3>
+                  <h1 >Hostel Complains</h1>
                 </div>
                 <hr />
                 <div class="float__infoss">
@@ -54,18 +54,72 @@ const Print = () => {
                 <li> Website : <span> www.Andrew.com </span> </li>
                 <li> Country : <span> United states </span> </li> 
               </ul> */}
-                  {complains &&
+              {/* <table>
+                          <tr>
+                            <th>Name </th>
+                            <th>phone number</th>
+                            <th>Room No.</th>
+                            <th>Block No.</th>
+                            <th>Complain</th>
+                          </tr> */}
+              {/* </table> */}
+                  {/* {complains &&
                     complains.map((com) => (
-                      <div key={com._id}>
-                        <div>{com.name}</div>
-                        <div>{com.number}</div>
-                        <div>{com.roomno}</div>
-                        <div>{com.bloc}</div>
-                        <div>{com.complain}</div>
-                      </div>
-                    ))}
+                      <div key={com._id}> */}
+                      <div className="App">
+                        <table className="center">
+                          <tr>
+                            <th>Name </th>
+                            <th>phone number</th>
+                            <th>Room No.</th>
+                            <th>Block No.</th>
+                            <th>Complain</th>
+                          </tr>
+
+                  {complains &&
+                    complains.map((com) => {
+                      
+                      return(
+                        <tr key={com._id}>
+                          <td>{com.name}          </td>
+                          <td>{com.number}</td>
+                          <td>{com.roomno}</td>
+                          <td>{com.block}</td>
+                          <td>{com.complain}</td>
+                        </tr> 
+
+                        )  
+                       
+                       } )
+                 }
+                        </table>
+
+                        </div>   
+
+             {/* <button onClick={handlePrint} className="print__button">
+                {" "}
+                Print{" "}
+              </button>
+ */}
+
+                {/* <button
+                   type="submit"
+                   style={{marginLeft: "50%",
+                  marginRight:"50%"}}
+                   className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                   onClick={handlePrint} >
+                   Print
+                   </button> */}
                 </div>
               </div>
+              <button
+                   type="submit"
+                   style={{marginLeft: "50%",
+                  marginRight:"50%"}}
+                   className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                   onClick={handlePrint} >
+                   Print
+                   </button>
             </div>
           </div>
         </div>

@@ -13,6 +13,13 @@ router.get("/api/collections", (req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.get("/api/collections/:id", (req, res) => {
+    console.log(`id: ${req.body}`)
+    register.find({})
+        .then(collections => res.json(collections))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.post("/api/submitAccepted", async (req, res) => {
     // console.log(req.body.aadhar.public_id)
 

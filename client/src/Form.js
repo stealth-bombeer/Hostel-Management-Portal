@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 const ImagePreview = ({ imageUrl }) => {
     const [showImage, setShowImage] = useState(false);
@@ -131,34 +131,23 @@ const App = () => {
     return (
         <div>
             <h1>Documents</h1>
-            {documents.map(document => (
-                <div key={document._id} className="doc-content">
-                    <h2 className="studentName"> Student Name: {document.name}</h2>
-                    <p className="fields">Course: {document.course}</p>
-                    <p className="fields">Category: {document.category}</p>
-                    <p className="fields">Semester: {document.semester}</p>
-                    <p className="fields">Merit: {document.merit}</p>
-                    <p className="fields">Academic Year (Institute): {document.academicYear_institute}</p>
-                    <p className="fields">Academic Year (hostel): {document.academicYear_hostel}</p>
-                    <p className="fields">Parent Name: {document.pname}</p>
-                    <p className="fields">Address: {document.address}</p>
-                    <p className="fields">STU_Number: {document.stu_Number}</p>
-                    <p className="fields">Parent Number: {document.parent_Number}</p>
-                    <p className="fields">Email: {document.email}</p>
-                    <p className="fields">Guardian Name: {document.gname}</p>
-                    <p className="fields">Guardian Address: {document.gaurdian_address}</p>
-                    <p className="fields">Guardian Number: {document.gaurdian_Number}</p>
-                    <p className="fields">Gender: {document.gender}</p>
-                    <p className="aadhar"> Aadhar Card:  <ImagePreview imageUrl={document['aadhar']['url']} /></p>
-                    <p className="allotment">Allotment: <ImagePreview imageUrl={document['allotment']['url']} /></p>
-                    <p className="sundertaking">Student Undertaking: <ImagePreview imageUrl={document['sundertaking']['url']} /></p>
-                    <p className="pundertaking">Parent Undertaking: <ImagePreview imageUrl={document['pundertaking']['url']} /></p>
-                    <div>
-                        <button type="button" onClick={() => handleAccept(document)} className="acceptButton">Accept</button>
-                        <button type="button" onClick={() => handleReject(document)} className="rejectButton">Reject</button>
-                    </div>
-                </div>
-            ))}
+            <table>
+                <tr>
+                    <th>Student Name</th>
+                </tr>
+                <tr>
+
+                    <td>
+                        {documents.map(document => (
+                            <div key={document._id} className="doc-content">
+                                <Link to={`/student-info/${document._id}`}>
+                                    <h2 className="studentName">{document.name}</h2>
+                                </Link>
+                            </div>
+                        ))}
+                    </td>
+                </tr>
+            </table>
         </div>
     );
 };

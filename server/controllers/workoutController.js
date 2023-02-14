@@ -14,20 +14,13 @@ const mongoose = require('mongoose')
 //   res.status(200).json(names)
 // }
 const getBlock = async (req, res) => {
-  // const BlockNo = req.query.BlockNo
-  // const FloorNo = req.query.FloorNo
-  // console.log(req.headers.BlockNo);
-  const id=req.id
+  const id = req.id;
 
-  const names = await Blockfloor.find({id}).sort({createdAt: 1})
+  const names = await Blockfloor.find({ id, "Students.2": { $exists: false } }).sort({ createdAt: 1 });
 
-  res.status(200).json(names)
-  // console.log(req.headers.BlockNo);
-  // const { BlockNo } = req.headers;
-  // const rank = await blockfloor.findOne({ BlockNo })
-  // console.log(rank);
-  // return res.json({ rank });
-}
+  res.status(200).json(names);
+};
+
 
 
 // get a single workout
@@ -55,16 +48,25 @@ const createBlock = async (req, res) => {
   try {
     
     
-    const b =await Blockfloor.updateOne(
-      { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo : RoomNo },
-      { $push: { Students: { Name: Email } } }
-    );
+    const blockfloor = await Blockfloor.findOne({ BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo });
+
+    if (blockfloor.Students.length < 3) {
+      const result = await Blockfloor.updateOne(
+        { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo },
+        { $push: { Students: { Name: Email } } }
+      );
+      // check result and return updated document
+    } else {
+      throw new Error('less than 3');
+    }
+    
+    
     const c =await User.updateOne(
       { name: Email },
       { $set: {alloted:"1"} }
     );
     console.log(c,"Alloted")
-    res.status(200).json(b)
+    res.status(200).json('alloted')
   } catch (error) {
     if(error.code===11000)
    {

@@ -2,14 +2,17 @@
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
+
 header {
   background: #fff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -18,11 +21,13 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
 }
-.pages{
+
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -34,24 +39,28 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
@@ -64,9 +73,11 @@ header a {
 }
 
 /* new workout form */
-label, input {
+label,
+input {
   display: block;
 }
+
 input {
   padding: 10px;
   margin-top: 10px;
@@ -76,6 +87,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -85,6 +97,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -93,6 +106,7 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error {
   border: 1px solid var(--error);
 }
@@ -102,9 +116,12 @@ nav {
   display: flex;
   align-items: center;
 }
-nav a, nav button {
+
+nav a,
+nav button {
   margin-left: 10px;
 }
+
 nav button {
   background: #fff;
   color: var(--primary);
@@ -117,14 +134,16 @@ nav button {
 }
 
 /* auth forms */
-form.signup, form.login {
+form.signup,
+form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background: #fff;
   border-radius: 4px;
 }
-.fees_card{
+
+.fees_card {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -132,44 +151,49 @@ form.signup, form.login {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 /* AllotmentList css */
 .AllotmentList {
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
-  
+
 table {
   border: 2px solid forestgreen;
   width: 800px;
   height: 200px;
 }
-  
+
 th {
   border-bottom: 1px solid black;
 }
-  
+
 td {
   text-align: center;
 }
 
-.mrp{
+.mrp {
   margintop: 50px;
-  marginbottom:50px;
+  marginbottom: 50px;
 }
+
 :root {
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
+
 header {
   background: #fff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -178,11 +202,13 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
 }
-.pages{
+
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -194,24 +220,28 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
@@ -224,9 +254,11 @@ header a {
 }
 
 /* new workout form */
-label, input {
+label,
+input {
   display: block;
 }
+
 input {
   padding: 10px;
   margin-top: 10px;
@@ -236,6 +268,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -245,6 +278,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -253,6 +287,7 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error {
   border: 1px solid var(--error);
 }
@@ -262,9 +297,12 @@ nav {
   display: flex;
   align-items: center;
 }
-nav a, nav button {
+
+nav a,
+nav button {
   margin-left: 10px;
 }
+
 nav button {
   background: #fff;
   color: var(--primary);
@@ -290,12 +328,17 @@ nav button {
 
 /* fontawesome */
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
 
 /* Simple Reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 /* body */
 body {
@@ -313,7 +356,7 @@ body {
   margin: 3em auto;
   padding: 0 1em;
   max-width: 370px;
-  
+
 }
 
 
@@ -389,10 +432,11 @@ form {
   border-bottom: 1px dotted #8c8c8c;
 }
 
-.feecard{
+.feecard {
   display: flex;
   left: 20px;
 }
+
 /* .feecard1{
   margin: 20px;
 }
@@ -404,14 +448,17 @@ form {
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
   background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
 }
+
 header {
   background: #fff;
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -420,11 +467,13 @@ header .container {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #333;
   text-decoration: none;
 }
-.pages{
+
+.pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
@@ -436,24 +485,28 @@ header a {
   grid-template-columns: 3fr 1fr;
   gap: 100px;
 }
+
 .workout-details {
   background: #fff;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
+
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
   color: var(--primary);
 }
+
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
   color: #555;
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
@@ -466,9 +519,11 @@ header a {
 }
 
 /* new workout form */
-label, input {
+label,
+input {
   display: block;
 }
+
 input {
   padding: 10px;
   margin-top: 10px;
@@ -478,6 +533,7 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
 form button {
   background: var(--primary);
   border: 0;
@@ -487,6 +543,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 div.error {
   padding: 10px;
   background: #ffefef;
@@ -495,6 +552,7 @@ div.error {
   border-radius: 4px;
   margin: 20px 0;
 }
+
 input.error {
   border: 1px solid var(--error);
 }
@@ -504,9 +562,12 @@ nav {
   display: flex;
   align-items: center;
 }
-nav a, nav button {
+
+nav a,
+nav button {
   margin-left: 10px;
 }
+
 nav button {
   background: #fff;
   color: var(--primary);
@@ -519,14 +580,16 @@ nav button {
 }
 
 /* auth forms */
-form.signup, form.login {
+form.signup,
+form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
   background: #fff;
   border-radius: 4px;
 }
-.fees_card{
+
+.fees_card {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -534,140 +597,154 @@ form.signup, form.login {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-.registration{
+
+.registration {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  margin-block :200px;
+  margin-block: 200px;
 
 
 }
 
 
-.mrp{
+.mrp {
   margintop: 50px;
-  marginbottom:50px;
+  marginbottom: 50px;
 }
 
 /* AllotmentList css */
 .AllotmentList {
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
-  
+
 table {
-  border: 2px ;
+  border: 2px;
   /* color: solid forestgreen; */
   width: 800px;
   height: 200px;
 }
-  
+
 th {
   border-bottom: 1px solid black;
 }
-  
+
 td {
   text-align: center;
 }
-.rules{
-  
+
+.rules {
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
 
 }
-.home{
-  
-}
-.vjtiimg{
+
+.home {}
+
+.vjtiimg {
   background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    position:relative;
-    top: 0%;
-    left: 0%;
-    z-index: 0;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  top: 0%;
+  left: 0%;
+  z-index: 0;
 
 }
 
-.fontmedium{
+.fontmedium {
   height: 200px;
   width: 50%;
 }
+
 .homeBgImg {
   background-repeat: no-repeat;
   height: 100vh;
   width: 100vw;
-  position:absolute;
+  position: absolute;
   top: 0%;
   left: 0%;
-  z-index:-20;
+  z-index: -20;
   opacity: 0.45;
 
 
 }
-#pulsefit{
+
+#pulsefit {
   position: absolute;
   z-index: 10;
   margin: auto;
-  left:25%;
-  top:25%;
-  
+  left: 25%;
+  top: 25%;
+
   font-size: 65px;
-  color:  black ;
+  color: black;
 }
-#pulsefit2{
+
+#pulsefit2 {
   position: absolute;
   z-index: 10;
   margin: auto;
-  left:25%;
-  right:25%;
-  top:35%;
-  
+  left: 25%;
+  right: 25%;
+  top: 35%;
+
   font-size: 30px;
-  color:  black ;
-}
-.cards{
-  display:flex;
-  flex-direction: row;
-  left:20px;
-}
-.mohatsavcard1{
-  margin:20px;
-}
-.mohatsavcard2{
-  margin:20px;
-}
-.mohatsavcard3{
-  margin:20px;
+  color: black;
 }
 
-.homecards{
-  display:flex;
+.cards {
+  display: flex;
   flex-direction: row;
-  left:20px;
-  margin:300px;
+  left: 20px;
 }
-.homecard1{
-  margin:10px;
+
+.mohatsavcard1 {
+  margin: 20px;
 }
-.homecard2{
-  margin:10px;
+
+.mohatsavcard2 {
+  margin: 20px;
 }
-.homecard3{
-  margin:10px;
+
+.mohatsavcard3 {
+  margin: 20px;
 }
-.bgColour{
-  background-Colour:lightcyan;
+
+.homecards {
+  display: flex;
+  flex-direction: row;
+  left: 20px;
+  margin: 300px;
 }
-.feecard{
-  display:flex;
+
+.homecard1 {
+  margin: 10px;
+}
+
+.homecard2 {
+  margin: 10px;
+}
+
+.homecard3 {
+  margin: 10px;
+}
+
+.bgColour {
+  background-Colour: lightcyan;
+}
+
+.feecard {
+  display: flex;
 }
 
 
@@ -675,13 +752,157 @@ td {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.mrp{
+
+.mrp {
   margintop: 50px;
-  marginbottom:50px;
+  marginbottom: 50px;
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS */
+.acceptButton {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: 1.5em;
+}
+
+.acceptButton:hover {
+  box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+/* CSS */
+.rejectButton {
+  background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin: 34px;
+}
+
+.rejectButton:not([disabled]):focus {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+.rejectButton:not([disabled]):hover {
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+}
+
+/* CSS
+.preview-button {
+  background-color: #e1ecf4;
+  border-radius: 3px;
+  border: 1px solid #7aa7c7;
+  box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+  box-sizing: border-box;
+  color: #39739d;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.15385;
+  margin: 0;
+  outline: none;
+  padding: 8px .8em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.preview-button:hover,
+.preview-button:focus {
+  background-color: #b3d3ea;
+  color: #2c5777;
+}
+
+.preview-button:focus {
+  box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+}
+
+.preview-button:active {
+  background-color: #a0c7e4;
+  box-shadow: none;
+  color: #2c5777;
+  margin: 23px;
+} */
+
+.aadhar,
+.allotment,
+.sundertaking,
+.pundertaking {
+  display: flex;
+  font-size: 1.5em;
+  padding: 12px;
+}
+
+.studentName {
+  color: blue;
+  font-size: 1.5em;
+}
+
+.doc-content {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid green;
+  margin: 12px;
+}
+
+.preview-button {
+  background-color: rgb(33, 175, 222);
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.5s ease-in-out;
+}
+
+.preview-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px lightblue;
+}

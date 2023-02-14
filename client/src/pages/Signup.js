@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import  {useSignup} from "../hooks/useSignup"
 
 const Signup = () => {
-const{signup,error,isLoading}=useSignup();
+const{signup,error,isLoading,success,setSuccess}=useSignup();
 
   const [branch, setBranch] = useState('');
   const [category, setCategory] = useState('');
@@ -20,9 +20,28 @@ const{signup,error,isLoading}=useSignup();
       event.preventDefault()
 
     // console.log(name,number,branch,category,year,merit,address,gender,email,password)
-      await signup(name,number,branch,category,year,merit,address,gender,email,password)
+      await signup(name,number,branch,category,year,merit,address,gender,email,password,setAddress,setBranch,setCategory,setEmail,setGender,setMerit,setName,setNumber,setPassword,setYear)
+      // await suc(success)
 
   };
+
+
+
+useEffect(() => {
+  console.log("UseEffect msg")
+  setName("")
+  setBranch("")
+  setCategory("")
+  setEmail("")
+  setPassword("")
+  setMerit("")
+  setNumber("")
+  setAddress("")
+  setYear("")
+  setGender("")
+  setGender("")
+  
+}, [success]);
   // const handleChange1 = event => {
   //   console.log('Label 👉️', event.target.selectedOptions[0].label);
   //   console.log(event.target.value);
@@ -382,6 +401,7 @@ console.log(name);
         Submit
       </button>
     </form>
+    {/* {success ? <h2> Success</h2>:<div></div>} */}
   </div>
   </div>
 </>

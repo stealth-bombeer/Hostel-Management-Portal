@@ -3,7 +3,7 @@ const {
   getBlock,
 
   createBlock,
-
+  createcomplain
   //updateName,
 } = require("../controllers/workoutController");
 const requireAuth = require("../middleware/requireAuth");
@@ -21,6 +21,8 @@ router.get("/home", getBlock);
 
 // POST a new workout
 router.post("/home", createBlock);
+
+router.post("/complainclerk",createcomplain)
 
 // DELETE a workout
 // router.delete('/:id', deleteWorkout)

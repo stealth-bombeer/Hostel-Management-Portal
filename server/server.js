@@ -1,11 +1,11 @@
 require("dotenv").config();
 
-
-const express = require('express')
-const mongoose = require('mongoose')
-const workoutRoutes = require('./routes/workouts')
-const userRoutes = require('./routes/user')
-const adminRoutes = require('./routes/admin')
+const express = require("express");
+const mongoose = require("mongoose");
+const workoutRoutes = require("./routes/workouts");
+const userRoutes = require("./routes/user");
+const adminRoutes = require("./routes/admin");
+const docRoutes = require("./routes/docRoutes")
 
 // const express = require("express");
 // const mongoose = require("mongoose");
@@ -14,16 +14,25 @@ const adminRoutes = require('./routes/admin')
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
-require("./models/userModel")
+const fileUpload = require("express-fileupload");
+require("./models/userModel");
 // app.use(cors());
-
 
 // express app
 const app = express();
 
 // middleware
-app.use(express.json());
-app.use(cors())
+app.use(
+  express.json({
+    limit: "50mb",
+  })
+);
+app.use(cors());
+app.use(
+  fileUpload({
+    useTempFiles: true,
+  })
+);
 // const server = http.createServer(app);
 
 app.use((req, res, next) => {
@@ -32,17 +41,15 @@ app.use((req, res, next) => {
 });
 const server = http.createServer(app);
 
-
 // routes
-
-app.use('/api/workouts', workoutRoutes)
-app.use('/api/user', userRoutes)
-app.use('/api/admin', adminRoutes)
+app.use('/', docRoutes);
+app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
-``
-
+``;
 
 // connect to db
 mongoose
@@ -65,7 +72,6 @@ const io = new Server(server, {
   },
 });
 
-
 io.on("connection", (socket) => {
   //when someone connects(evrryone will have differnet socket id)to the server we console out socket id
   console.log(`User connected ${socket.id}`);
@@ -74,7 +80,6 @@ io.on("connection", (socket) => {
   socket.on("join_room", (data) => {
     socket.join(data);
     console.log(`user with id :${socket.id} joined room:${data}`);
-
   });
   socket.on("send_message", (data) => {
     console.log(data);
@@ -94,23 +99,18 @@ io.on("connection", (socket) => {
     io.disconnectSockets();
   });
 });
-const User=mongoose.model("User")
-app.get('/allotment',(req,res)=>
-{
-  User.find((err,val)=>
-  {
-    if(err)
-    {
-      console.log(err)
+const User = mongoose.model("User");
+app.get("/allotment", (req, res) => {
+  User.find((err, val) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(val);
     }
-    else 
-    {
-      res.json(val)
-    }
-  })
-})
+  });
+});
 
 //listening to server
 server.listen(4000, () => {
-    console.log('listening to 4000')
-})
+  console.log("listening to 4000");
+});

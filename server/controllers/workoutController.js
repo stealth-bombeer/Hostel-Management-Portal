@@ -1,4 +1,6 @@
 const Blockfloor = require('../models/blockSchema')
+const Complain = require('../models/complainModel')
+
 const mongoose = require('mongoose')
 
 // get all Names
@@ -148,7 +150,44 @@ const createBlock = async (req, res) => {
 
 //   res.status(200).json(name)
 // }
+const createcomplain = async (req, res) => {
+  console.log("Inside createcomplain")
+  const {name,number,block,roomno,complain} = req.body
 
+  let emptyFields = []
+  if(!name) {
+    emptyFields.push('name')
+  }
+  if(!number) {
+    emptyFields.push('number')
+  }
+  if(!block) {
+    emptyFields.push('block')
+  }
+  if(!roomno) {
+    emptyFields.push('roomno')
+  }
+  if(!complain) {
+    emptyFields.push('complain')
+  }
+  
+  if(emptyFields.length > 0) {
+    return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
+  }
+  try
+  {
+    // const exists= await Appointment.find({Slot})
+    // if(exists)
+    // {
+    //   res.status(400).json({error: error.message})
+    // }
+  const comp = await Complain.create({name,number,block,roomno,complain})
+  res.status(200).json(comp)
+  }
+  catch(error){
+    res.status(400).json({error: error.message})
+  }
+}
 
 module.exports = {
   getBlock,
@@ -156,5 +195,6 @@ module.exports = {
   // createName,
   
   // updateName
-  createBlock
+  createBlock,
+  createcomplain
 }

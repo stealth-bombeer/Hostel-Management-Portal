@@ -8,7 +8,10 @@ import AdminSignup from "./pages/AdminSignup";
 import AdminNavbar from "./components/AdminNavbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Mer from "./pages/Mer";
 import Navbar from "./components/Navbar";
 import Fees from "./context/Fees";
@@ -23,7 +26,9 @@ import Notification from "./pages/Notification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
-
+import PdfUploader from "./Form";
+import Print from "./pages/Print";
+import ComplainClerk from "./pages/ComplainClerk";
 const socket = io.connect("http://localhost:4000");
 
 function App() {
@@ -37,15 +42,27 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={user ? <HomeMain/> : <Navigate to="/login" />}
+              element={user ? <HomeMain /> : <Navigate to="/login" />}
             />
             <Route
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             />
             <Route
+              path="/register"
+              element={!user ? <Register /> : <Navigate to="/" />}
+            />
+             <Route
+              path="/forgotPassword"
+              element={!user ? <ForgotPassword/> : <Navigate to="/" />}
+            />
+            <Route
+              path="/resetPassword/:newToken"
+              element={!user ? <ResetPassword/> : <Navigate to="/" />}
+            />
+            <Route
               path="/signup"
-              element={!user ? <Signup /> : <Navigate to="/" />}
+              element={admin ? <Signup /> : <Navigate to="/login" />}
             />
 
             <Route
@@ -68,6 +85,14 @@ function App() {
               path="/complains"
               element={user ? <Complains /> : <Navigate to="/login" />}
             />
+             <Route
+              path="/print"
+              element={ <Print /> }
+            />
+            <Route
+              path="/complainclerk"
+              element={ <ComplainClerk /> }
+            />
             <Route
               path="/pass"
               element={user ? <Pass /> : <Navigate to="/login" />}
@@ -80,7 +105,10 @@ function App() {
               path="/notification"
               element={user ? <Notification /> : <Navigate to="/login" />}
             />
-            <Route path="/admin/mer" element={admin ? <Mer /> : <Navigate to="/adminlogin" />} />
+            <Route
+              path="/admin/mer"
+              element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
+            />
 
             <Route
               path="/rules"
@@ -98,6 +126,7 @@ function App() {
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
+            <Route path="/verify" element={<PdfUploader />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

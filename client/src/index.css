@@ -870,7 +870,8 @@ td {
 .aadhar,
 .allotment,
 .sundertaking,
-.pundertaking {
+.pundertaking,
+.fields {
   display: flex;
   font-size: 1.5em;
   padding: 12px;

@@ -183,24 +183,25 @@ const Home = () => {
 
             Block:no
             <select
-              // className={emptyFields.includes("RoomNo") ? "error" : ""}
-              value={BlockNo}
-              onChange={(e) => setBlockNo(e.target.value)}
-            >
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
-              <option value="E">E</option>
-              <option value="F">F</option>
-             
-            </select>
+  value={BlockNo}
+  onChange={(e) => setBlockNo(e.target.value)}
+>
+  <option value="" selected>--Select--</option>
+  <option value="A">A</option>
+  <option value="B">B</option>
+  <option value="C">C</option>
+  <option value="D">D</option>
+  <option value="E">E</option>
+  <option value="F">F</option>
+</select>
+
             Floor:no
             <select
               // className={emptyFields.includes("RoomNo") ? "error" : ""}
               value={FloorNo}
               onChange={(e) => setFloorNo(e.target.value)}
             >
+              <option value="" selected>--Select--</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>

@@ -3,7 +3,7 @@ const express = require('express')
 // controller functions
 const { loginAdmin, signupAdmin } = require('../controllers/adminController')
 // const AdminHome = require('../models/announcementSchema')
-const { createannouncement } = require('../controllers/notificationController')
+const { createannouncement,getcomplain } = require('../controllers/notificationController')
 
 const router = express.Router()
 
@@ -14,5 +14,6 @@ router.post('/adminlogin', loginAdmin)
 router.post('/adminsignup', signupAdmin)
 
 router.post('/ad', createannouncement)
+router.get('/comp', getcomplain)
 
 module.exports = router

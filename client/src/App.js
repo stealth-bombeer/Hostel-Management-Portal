@@ -27,7 +27,8 @@ import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
 import PdfUploader from "./Form";
-
+import Print from "./pages/Print";
+import ComplainClerk from "./pages/ComplainClerk";
 const socket = io.connect("http://localhost:4000");
 
 function App() {
@@ -83,6 +84,14 @@ function App() {
             <Route
               path="/complains"
               element={user ? <Complains /> : <Navigate to="/login" />}
+            />
+             <Route
+              path="/print"
+              element={ <Print /> }
+            />
+            <Route
+              path="/complainclerk"
+              element={ <ComplainClerk /> }
             />
             <Route
               path="/pass"

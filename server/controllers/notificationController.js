@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Announcement = require('../models/announcementModel')
+const Complain = require('../models/complainModel')
+
 
 
 // get all workouts
@@ -7,8 +9,26 @@ const getannouncement = async (req, res) => {
   //const _id = req._id
 
   const ann = await Announcement.find({}).sort({createdAt: -1})
+res.status(200).json(ann)
+  
+}
 
-  res.status(200).json(ann)
+
+
+// get all workouts
+const getcomplain = async (req, res) => {
+  //const _id = req._id
+
+  const com = await Complain.find({}).sort({createdAt: -1})
+try{
+  res.status(200).json(com)
+
+}
+
+catch(error)
+{
+  res.status(400).json({error: error.message})
+}
 }
 
 // get a single workout
@@ -97,5 +117,6 @@ const createannouncement = async (req, res) => {
 
 module.exports = {
     getannouncement,
- createannouncement
+ createannouncement,
+ getcomplain
 }

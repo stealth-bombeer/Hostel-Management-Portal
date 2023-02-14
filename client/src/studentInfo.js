@@ -22,6 +22,7 @@ const StudentInfo = () => {
     const navigate = useNavigate();
     const [documents, setDocuments] = useState([]);
     const handleAccept = async (e) => {
+        console.log(`e: ${e}`);
         const data = {
             name: e['name'],
             course: e['course'],
@@ -32,7 +33,7 @@ const StudentInfo = () => {
             academicYear_hostel: e['academicYear_hostel'],
             pname: e['pname'],
             address: e['address'],
-            stu_number: e['stu_number'],
+            stu_Number: e['stu_Number'],
             parent_Number: e['parent_Number'],
             email: e['email'],
             gname: e['gname'],
@@ -101,7 +102,7 @@ const StudentInfo = () => {
             academicYear_hostel: e['academicYear_hostel'],
             pname: e['pname'],
             address: e['address'],
-            stu_number: e['stu_number'],
+            stu_Number: e['stu_Number'],
             parent_Number: e['parent_Number'],
             email: e['email'],
             gname: e['gname'],

@@ -11,7 +11,7 @@ const{signup,error,isLoading,success,setSuccess}=useSignup();
   const [name , setName ]= useState ('');
   const [number , setNumber ]= useState ('');
   const [year , setYear ]= useState ('');
-  const [merit , setMerit ]= useState ('');
+  const [regid , setRegid ]= useState ('');
   const [email , setEmail ]= useState ('');
   const[password,setPassword]=useState('');
  
@@ -20,7 +20,7 @@ const{signup,error,isLoading,success,setSuccess}=useSignup();
       event.preventDefault()
 
     // console.log(name,number,branch,category,year,merit,address,gender,email,password)
-      await signup(name,number,branch,category,year,merit,address,gender,email,password,setAddress,setBranch,setCategory,setEmail,setGender,setMerit,setName,setNumber,setPassword,setYear)
+      await signup(name,number,branch,category,year,regid,address,gender,email,password,setAddress,setBranch,setCategory,setEmail,setGender,setRegid,setName,setNumber,setPassword,setYear)
       // await suc(success)
 
   };
@@ -34,7 +34,7 @@ useEffect(() => {
   setCategory("")
   setEmail("")
   setPassword("")
-  setMerit("")
+  setRegid("")
   setNumber("")
   setAddress("")
   setYear("")
@@ -169,11 +169,16 @@ console.log(name);
     id="branches"
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
   >
-    <option selected="">Choose your branch</option>
-    <option value="cs">cs</option>
-    <option value="mech">mech</option>
-    <option value="civil">civil</option>
-    <option value="electrinics">electronics</option>
+    <option selected="">Branch</option>
+                                    <option value="COMPS">COMPS</option>
+                                    <option value="IT">IT</option>
+                                    <option value="MECH">MECH</option>
+                                    <option value="EXTC">EXTC</option>
+                                    <option value="CIVIL">CIVIL</option>
+                                    <option value="TEXT">TEXT</option>
+                                    <option value="PROD">PROD</option>
+                                    <option value="TRONICS">TRONICS</option>
+                                    <option value="TRICAL">TRICAL</option>
     console.log("hi");
   </select>
 </>
@@ -192,11 +197,17 @@ console.log(name);
     id="branch"
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
   >
-    <option selected="">Choose your category</option>
-    <option value="open">open</option>
-    <option value="obc">obc</option>
-    <option value="sc">st</option>
-    <option value="nt">nt</option>
+    <option selected="">Category</option>
+                                    <option value="OPEN">OPEN</option>
+                                    <option value="OBC">OBC</option>
+                                    <option value="SC">SC</option>
+                                    <option value="ST">ST</option>
+                                    <option value="NT">NT</option>
+                                    <option value="VJ">VJ</option>
+                                    <option value="DT">DT</option>
+                                    <option value="SBC">SBC</option>
+                                    <option value="PH">PH</option>
+                                    <option value="DEF">DEF</option>
   </select>
 </>
 
@@ -213,7 +224,7 @@ console.log(name);
             type="text"
             id="year"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Branch"
+            placeholder="Year"
             required=""
           />
         </div>
@@ -222,15 +233,15 @@ console.log(name);
             htmlFor="merit"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
           >
-            Merit Number
+            Reg ID
           </label>
           <input
-          value={merit}
-          onChange={(e) => setMerit(e.target.value)}
+          value={regid}
+          onChange={(e) => setRegid(e.target.value)}
             type="text"
             id="merit"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Branch"
+            placeholder="ID"
             required=""
           />
         </div>

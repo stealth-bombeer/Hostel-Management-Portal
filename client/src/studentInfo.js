@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+
 const ImagePreview = ({ imageUrl }) => {
     const [showImage, setShowImage] = useState(false);
     return (
@@ -17,6 +19,7 @@ const ImagePreview = ({ imageUrl }) => {
     );
 };
 const StudentInfo = () => {
+    const [error, setError] = useState('')
     const { id } = useParams();
     console.log(`id1: ${id}`)
     const navigate = useNavigate();
@@ -125,6 +128,7 @@ const StudentInfo = () => {
                 public_id: e['pundertaking']['public_id'],
                 url: e['pundertaking']['url']
             },
+            message: error
         }
 
         fetch('http://127.0.0.1:4000/api/submitRejected', {
@@ -184,6 +188,10 @@ const StudentInfo = () => {
                 <p className="allotment">Allotment: <ImagePreview imageUrl={documentWithId2['allotment']['url']} /></p>
                 <p className="sundertaking">Student Undertaking: <ImagePreview imageUrl={documentWithId2['sundertaking']['url']} /></p>
                 <p className="pundertaking">Parent Undertaking: <ImagePreview imageUrl={documentWithId2['pundertaking']['url']} /></p>
+                <label>
+                    Message:
+                    <textarea value={error} onChange={(e) => setError(e.target.value)} />
+                </label>
                 <div>
                     <button type="button" onClick={() => handleAccept(documentWithId2)} className="acceptButton">Accept</button>
                     <button type="button" onClick={() => handleReject(documentWithId2)} className="rejectButton">Reject</button>

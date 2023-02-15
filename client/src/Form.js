@@ -112,6 +112,7 @@ const App = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data.message);
+                window.location.reload(true);
             })
             .catch(error => {
                 console.error(error);

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
-
+import { useAuthContext2 } from "../hooks/useAuthContext2";
+import { useAuthContext3 } from "../hooks/useAuthContext3";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
-
+  const { admin } = useAuthContext2();
+  const { clerk } = useAuthContext3();
   const handleClick = () => {
     logout();
   };
@@ -29,12 +31,13 @@ const Navbar = () => {
         </a>
 
         <nav>
-          {user && (
+          {user && !admin && !clerk && (
             <div>
               <span>{user.email}</span>
               <span>{user.year}</span>
               <Link to="/fees">FeePayment</Link>
               <Link to="/allot">Allotment-list</Link>
+              <Link to="/complainclerk">ComplainClerk</Link>
               {user.year != 2022 && <Link to="/home">SY</Link>}
               <Link to="/pass">Pass</Link>
               <Link to="/blocks">Blocks</Link>
@@ -48,11 +51,14 @@ const Navbar = () => {
             </div>
           )}
 
-          {!user && (
+          {!user && !clerk && !admin && (
             <div>
               <Link to="/login">Login</Link>
               <Link to="/register">Register</Link>
               <Link to="/adminlogin">Admin-Login</Link>
+              <Link to="/clerklogin">Clerk-Login</Link>
+              <Link to="/adminsignup">Admin-Signup</Link>
+              <Link to="/clerksignup">CLerk-Signup</Link>
             </div>
           )}
         </nav>

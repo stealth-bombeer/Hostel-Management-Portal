@@ -107,6 +107,10 @@ const RejectedSchema = new Schema({
             required: true,
         },
     },
+    message: {
+        type: String,
+        required: true,
+    },
 });
 
 const AcceptedSchema = new Schema(

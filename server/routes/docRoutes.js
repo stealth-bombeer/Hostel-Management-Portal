@@ -117,6 +117,7 @@ router.post("/api/submitRejected", upload.single("pdf"), async (req, res) => {
                 public_id: req.body.pundertaking.public_id,
                 url: req.body.pundertaking.public_id
             },
+            message: req.body.message
         });
         console.log("Inside try")
         await document.save();

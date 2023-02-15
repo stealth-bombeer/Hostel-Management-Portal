@@ -1,7 +1,8 @@
 const User = require("../models/userModel");
 const Register = require("../models/registerModel");
-const {resetPassword}=require('../utils/emailTemplates')
-const {sendEmail}=require('../utils/sendEmail')
+const FeesAllotment=require('../models/feesAllotmentModel')
+const { resetPassword } = require("../utils/emailTemplates");
+const { sendEmail } = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2;
 const createToken = (_id) => {
@@ -27,14 +28,56 @@ const loginUser = async (req, res) => {
     const year = user.year;
     const name = user.name;
     const number = user.number;
-    const alloted= user.alloted;
-    res.status(200).json({ name,number,year, gender, email, token, alloted });
+    const alloted = user.alloted;
+    res.status(200).json({ name, number, year, gender, email, token, alloted });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
 // signup a user
+const feesUpload = async (req, res) => {
+  const { name,feesReceipt, prevAllot } = req.body;
+  console.log("inside feesUpload userctrller");
+
+
+  try 
+  {
+
+    var options = {
+      validation: {
+        'allowedExts': ['pdf'],
+        'allowedMimeTypes': ['text/plain', 'application/msword', 'application/x-pdf', 'application/pdf']
+      }
+    }
+    const feesReceiptResult = await cloudinary.uploader.upload(feesReceipt, {
+      folder: "FeesReceipt",
+    });
+ 
+    const prevAllotmentResult = await cloudinary.uploader.upload(prevAllot, {
+      folder: "PrevAllotment",
+    });
+
+    const upload=await FeesAllotment.upload({
+      name,
+      feesReceipt: {
+        public_id: feesReceiptResult.public_id,
+        url: feesReceiptResult.secure_url,
+      },
+      prevAllot: {
+        public_id: prevAllotmentResult.public_id,
+        url:prevAllotmentResult.secure_url,
+      }
+    })
+  res.status(200).json({upload})
+  } 
+  catch (error) {
+    console.log("Inside feesupload usectrl",error.message)
+    res.status(400).json({error:error.message})
+  }
+
+};
+
 const registerUser = async (req, res) => {
   const {
     name,
@@ -110,14 +153,15 @@ const registerUser = async (req, res) => {
       },
     });
 
-    res.status(200).json({name})
+    res.status(200).json({ name });
   } catch (error) {
-    console.log("error inside in catch usercontroller register user ", error.message);
+    console.log(
+      "error inside in catch usercontroller register user ",
+      error.message
+    );
     res.status(400).json({ error: error.message });
   }
-
 };
-
 
 const signupUser = async (req, res) => {
   const {
@@ -147,65 +191,63 @@ const signupUser = async (req, res) => {
       password
     );
 
-    res
-      .status(200)
-      .json({
-        name
-      });
+    res.status(200).json({
+      name,
+    });
   } catch (error) {
-    console.log("inside signup user catch",error.message)
+    console.log("inside signup user catch", error.message);
     res.status(400).json({ error: error.message });
   }
 };
 
-const forgotPassword=async (req,res)=>
-{
-  const {email}=req.body;
-
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
 
   try {
     const user = await User.forgot(email);
-   console.log(user);
+    console.log(user);
     const newToken = jwt.sign(
       {
-      _id: user._id
+        _id: user._id,
       },
       process.env.JWT_RESET_PW_KEY,
       {
-          expiresIn: "20m",
+        expiresIn: "20m",
       }
-    )
-    console.log(newToken)
-    const emailTemplate=resetPassword(email,newToken);
+    );
+    console.log(newToken);
+    const emailTemplate = resetPassword(email, newToken);
     sendEmail(emailTemplate);
     res.status(200).json({
-      status:true,
-      message:"Email for reset password has been sent"
-    })
-  } 
-  catch (error) {
+      status: true,
+      message: "Email for reset password has been sent",
+    });
+  } catch (error) {
     res.status(400).json({ error: error.message });
-  } 
-}
-const ResetPassword=async (req,res)=>
-{
-  const newToken=req.params.newToken
-  const {newpassword,confirmpassword}=req.body;
+  }
+};
+const ResetPassword = async (req, res) => {
+  const newToken = req.params.newToken;
+  const { newpassword, confirmpassword } = req.body;
   try {
-    const decoded=jwt.verify(newToken,process.env.JWT_RESET_PW_KEY);
-    console.log(decoded,"inside resetpassoword in usercontroller")
+    const decoded = jwt.verify(newToken, process.env.JWT_RESET_PW_KEY);
+    console.log(decoded, "inside resetpassoword in usercontroller");
 
-   const user=await User.reset(decoded._id,newpassword,confirmpassword);
-   res.status(200).json({
-    status:true,
-    message:"Password changed successfully"
-  })
-
-  }
-  catch (error) {
+    const user = await User.reset(decoded._id, newpassword, confirmpassword);
+    res.status(200).json({
+      status: true,
+      message: "Password changed successfully",
+    });
+  } catch (error) {
     res.status(400).json({ error: error.message });
   }
-}
+};
 
-
-module.exports = { signupUser, registerUser, loginUser,forgotPassword,ResetPassword };
+module.exports = {
+  signupUser,
+  registerUser,
+  loginUser,
+  forgotPassword,
+  ResetPassword,
+  feesUpload,
+};

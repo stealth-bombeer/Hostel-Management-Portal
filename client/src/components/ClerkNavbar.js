@@ -1,32 +1,31 @@
 import { Link } from 'react-router-dom'
-import { useLogout2 } from '../hooks/useLogout2'
-import { useAuthContext2 } from '../hooks/useAuthContext2'
-import { useAuthContext } from '../hooks/useAuthContext'
+import { useLogout3 } from '../hooks/useLogout3'
 import { useAuthContext3 } from '../hooks/useAuthContext3'
+import { useAuthContext } from '../hooks/useAuthContext'
 
+import { useAuthContext2 } from '../hooks/useAuthContext2'
 
-
-const Navbar2 = () => {
-  const { logout2 } = useLogout2()
+const Navbar3 = () => {
+  const { logout3 } = useLogout3()
   const { admin } = useAuthContext2()
   const { user } = useAuthContext()
   const { clerk } = useAuthContext3()
   const handleClick = () => {
-    logout2()
+    logout3()
   }
 
   return (
     <header>
       <div className="container">
-        <Link to="/admin/ad">
+        <Link to="/clerk/home">
           <h1>VJTI Hostel Portal-Admin</h1>
         </Link>
         <nav>
-          {admin &&!user && !clerk && (
+          {clerk &&!user && !admin && (
             <div>
-              <span>{admin.email}</span>
+              <span>{clerk.email}</span>
               <button onClick={handleClick}>Log out</button>
-              <Link to="/admin/mer">Merit-List</Link>
+              {/* <Link to="/admin/mer">Merit-List</Link> */}
               <Link to="/signup">CreateUser</Link>
             </div>
             
@@ -43,4 +42,4 @@ const Navbar2 = () => {
   )
 }
 
-export default Navbar2
+export default Navbar3

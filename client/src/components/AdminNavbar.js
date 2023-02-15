@@ -28,6 +28,7 @@ const Navbar2 = () => {
               <button onClick={handleClick}>Log out</button>
               <Link to="/admin/mer">Merit-List</Link>
               <Link to="/signup">CreateUser</Link>
+              <Link to="/verify">Verify</Link>
             </div>
             
           )}

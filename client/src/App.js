@@ -35,6 +35,7 @@ import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
 import PdfUploader from "./Form";
 import StudentInfo from "./studentInfo";
+import StartNavbar from "./components/StartNavbar";
 // import ClerkSignup from "./pages/ClerkSignup";
 
 const socket = io.connect("http://localhost:4000");
@@ -47,7 +48,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {admin && <AdminNavbar />} 
-        {clerk && <ClerkNavbar />}  <Navbar />
+        {clerk && <ClerkNavbar />}  
+        {user && <Navbar />}
+        {!user && !clerk && !admin && <StartNavbar/>}
         <div className="pages">
           <Routes>
             <Route
@@ -76,14 +79,14 @@ function App() {
             />
 <Route
               path="/clerk/home"
-              element={clerk ? <Print /> : <Navigate to="/login" />}
+              element={clerk ? <Print /> : <Navigate to="/clerklogin" />}
             />
 
             <Route
               path="/fees"
               element={user ? <Fees /> : <Navigate to="/login" />}
             />
-            <Route path="/allot" element={<AllotmentList />} />
+            <Route path="/allot" element={user?<AllotmentList />:<Navigate to="/login" />} />
             <Route
               path="/home"
               element={user ? <Home /> : <Navigate to="/login" />}
@@ -144,7 +147,7 @@ function App() {
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
-            <Route path="/verify" element={<PdfUploader />}></Route>
+            <Route path="/verify" element={admin?<PdfUploader />:<Navigate to="/adminlogin" />}></Route>
             <Route path="/student-info/:id" element={<StudentInfo />}></Route>
           </Routes>
         </div>

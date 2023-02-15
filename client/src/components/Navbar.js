@@ -49,7 +49,9 @@ const Navbar = () => {
               <Link to="/Complains">Complaints</Link>
               <button onClick={handleClick}>Log out</button>
             </div>
-          )}
+          )}</nav>
+
+          {/* <nav>
 
           {!user && !clerk && !admin && (
             <div>
@@ -61,7 +63,7 @@ const Navbar = () => {
               <Link to="/clerksignup">CLerk-Signup</Link>
             </div>
           )}
-        </nav>
+        </nav> */}
       </div>
     </header>
   );

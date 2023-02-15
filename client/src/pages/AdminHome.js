@@ -1,45 +1,65 @@
-import { useState } from "react";
-// import { createannouncement } from "../../../Backend/controllers/notificationController";
-//import { create } from "../../../Backend/models/workoutModel";
+import { useEffect, useState } from 'react'
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const AdminHome = () => {
-  const [announcement, setAnnouncement] = useState('');
-  
+  const [dat, setDat] = useState([]);
+  const { user } = useAuthContext();
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("hii")
-    // await createannouncement(announcement);
-    const ann = { announcement };
-
-    fetch('http://localhost:4000/api/admin/ad', {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        announcement: ann.announcement
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      const response = await fetch('/api/admin/ad', {
+        //headers: {'Authorization': `Bearer ${user.token}`},
       })
-    }).then((res) => {
-        console.log("announcement made")
-        setAnnouncement('')
-        return res.json()
-     })
+      const json = await response.json()
+
+      if (response.ok) {
+        console.log(json);
+        setDat([...json]);
+      }
+    }
+
+    fetchWorkouts();
+  }, []);
+
+  const handleSelectRoom = (students) => {
+    setSelectedRoom(students);
   }
 
   return (
     <div className="announcement-box">
-      <h2>Make an announcement</h2>
-      <form >
+      <table>
+        <thead>
+          <tr>
+            <th>Block No</th>
+            <th>Floor No</th>
+            <th>Room No</th>
+            <th>Occupied</th>
+            <th>Students</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dat && dat.map((date) => (
+            <tr key={date._id}>
+              <td>{date.BlockNo}</td>
+              <td>{date.FloorNo}</td>
+              <td>{date.RoomNo}</td>
+              <td>{date.Students.length}</td>
+              <td>
+              
+              <ul>
+              {date.Students.map((student) => (
+              <li key={student._id}>{student.Name}</li>
+              ))}
+              </ul>
+              
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       
-        <textarea
-          required
-          rows="5" cols="80"
-          value={announcement}
-          onChange={(e) => setAnnouncement(e.target.value)}
-        ></textarea>
-        <button onClick={handleSubmit}>Done</button>
-      </form>
     </div>
   );
 }
- 
 export default AdminHome;

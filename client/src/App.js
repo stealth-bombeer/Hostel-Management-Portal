@@ -36,6 +36,7 @@ import Blocks from "./pages/Blocks";
 import PdfUploader from "./Form";
 import StudentInfo from "./studentInfo";
 import StartNavbar from "./components/StartNavbar";
+import Adminann from "./pages/Adminann";
 // import ClerkSignup from "./pages/ClerkSignup";
 
 const socket = io.connect("http://localhost:4000");
@@ -121,6 +122,10 @@ function App() {
             <Route
               path="/admin/mer"
               element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
+            />
+             <Route
+              path="/admin/ann"
+              element={admin ? <Adminann /> : <Navigate to="/adminlogin" />}
             />
 
             <Route

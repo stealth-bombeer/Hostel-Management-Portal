@@ -13,12 +13,34 @@ router.get("/api/collections", (req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.get("/api/collections/:id", (req, res) => {
+    console.log(`id: ${req.body}`)
+    register.find({})
+        .then(collections => res.json(collections))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.post("/api/submitAccepted", async (req, res) => {
-    // console.log(req.body.aadhar.public_id)
+    console.log(`body: ${req.body}`)
 
     try {
         const document = new Accepted({
             name: req.body.name,
+            course: req.body.course,
+            category: req.body.category,
+            semester: req.body.semester,
+            merit: req.body.merit,
+            academicYear_institute: req.body.academicYear_institute,
+            academicYear_hostel: req.body.academicYear_hostel,
+            pname: req.body.pname,
+            address: req.body.address,
+            stu_Number: req.body.stu_Number,
+            parent_Number: req.body.parent_Number,
+            email: req.body.email,
+            gname: req.body.gname,
+            gaurdian_address: req.body.gaurdian_address,
+            gaurdian_Number: req.body.gaurdian_Number,
+            gender: req.body.gender,
             aadhar: {
                 public_id: req.body.aadhar.public_id,
                 url: req.body.aadhar.url
@@ -64,6 +86,21 @@ router.post("/api/submitRejected", upload.single("pdf"), async (req, res) => {
     try {
         const document = new Rejected({
             name: req.body.name,
+            course: req.body.course,
+            category: req.body.category,
+            semester: req.body.semester,
+            merit: req.body.merit,
+            academicYear_institute: req.body.academicYear_institute,
+            academicYear_hostel: req.body.academicYear_hostel,
+            pname: req.body.pname,
+            address: req.body.address,
+            stu_Number: req.body.stu_Number,
+            parent_Number: req.body.parent_Number,
+            email: req.body.email,
+            gname: req.body.gname,
+            gaurdian_address: req.body.gaurdian_address,
+            gaurdian_Number: req.body.gaurdian_Number,
+            gender: req.body.gender,
             aadhar: {
                 public_id: req.body.aadhar.public_id,
                 url: req.body.aadhar.url

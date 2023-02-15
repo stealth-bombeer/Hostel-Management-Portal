@@ -85,7 +85,7 @@ const StudentInfo = () => {
             .then(data => {
                 console.log(data.message);
 
-                window.location.reload(true);
+                // window.location.reload(true);
             })
             .catch(error => {
                 console.error(error);

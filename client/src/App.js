@@ -37,6 +37,8 @@ import PdfUploader from "./Form";
 import StudentInfo from "./studentInfo";
 import StartNavbar from "./components/StartNavbar";
 // import ClerkSignup from "./pages/ClerkSignup";
+import Accepted from "./pages/Accepted";
+import Rejected from "./pages/Rejected";
 
 const socket = io.connect("http://localhost:4000");
 
@@ -121,6 +123,14 @@ function App() {
             <Route
               path="/admin/mer"
               element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
+            />
+            <Route
+              path="/admin/acc"
+              element={admin ? <Accepted /> : <Navigate to="/adminlogin" />}
+            />
+            <Route
+              path="/admin/rej"
+              element={admin ? <Rejected /> : <Navigate to="/adminlogin" />}
             />
 
             <Route

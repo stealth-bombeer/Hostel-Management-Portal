@@ -1,6 +1,7 @@
 import { useEffect, useState }from 'react'
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import { useLogout } from "../hooks/useLogout";
 
 import WorkoutDetails from '../components/WorkoutDetails'
 import WorkoutForm from '../components/WorkoutForm'
@@ -17,6 +18,7 @@ const Home = () => {
   const [rm,setRm]=useState([]);
   const[loading,setLoading]=useState(true);
   const[dat,setDat]=useState([]);
+  const { logout } = useLogout();
 
   // const handleChange = (event) => {
     
@@ -54,8 +56,13 @@ const Home = () => {
     const json = await response.json();
 
    
-    if (response.ok) {
+    if (json=='alloted') {
       console.log("Hii")
+      logout();
+    }
+    if(!response.ok) {
+      if(json.error=='less than 3')
+      alert(json.error)
     }
 
     // const resp = await fetch("/api/workouts/home", {
@@ -83,7 +90,7 @@ const Home = () => {
     console.log(user.allocated)
     setRm([
       ...dat.filter((student) => {
-        return student.BlockNo === BlockNo && student.FloorNo == FloorNo&&student.Students.length>=0 &&user.alloted!=="1";
+        return student.BlockNo === BlockNo && student.FloorNo == FloorNo&&student.Students.length>=0 //&& user.alloted!=="1";
       }),
     ]);
     setTimeout(() => {

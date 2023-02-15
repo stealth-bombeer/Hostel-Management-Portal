@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const Admin = require('../models/adminModel')
+const Blockfloor = require('../models/blockSchema')
 const jwt = require('jsonwebtoken')
 const {Accepted} = require('../models/model')
 
@@ -40,6 +41,13 @@ const signupAdmin = async (req, res) => {
     res.status(400).json({error: error.message})
   }
 }
+const getallBlocks = async (req, res) => {
+  const id = req.id;
+
+  const names = await Blockfloor.find({ id}).sort({ createdAt: 1 });
+
+  res.status(200).json(names);
+};
 //get all accepted students
 const getacceptedstuds = async (req, res) => {
   //const _id = req._id
@@ -57,7 +65,7 @@ catch(error)
 }
 }
 
+module.exports = { signupAdmin, loginAdmin,getallBlocks,getacceptedstuds }
 
 
-
-module.exports = { signupAdmin, loginAdmin,getacceptedstuds }
+module.exports = { signupAdmin, loginAdmin,getacceptedstuds,getallBlocks }

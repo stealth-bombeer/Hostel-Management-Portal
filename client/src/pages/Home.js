@@ -225,7 +225,7 @@ const Home = () => {
       <table>
     <tr>
           <th> Room No</th>
-          <th> Size</th>
+          <th> Occupied</th>
           <th> Select</th>
           
           </tr>

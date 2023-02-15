@@ -1,7 +1,7 @@
 const express = require('express')
 
 // controller functions
-const { loginAdmin, signupAdmin } = require('../controllers/adminController')
+const { loginAdmin, signupAdmin,getallBlocks } = require('../controllers/adminController')
 // const AdminHome = require('../models/announcementSchema')
 const { createannouncement,getcomplain } = require('../controllers/notificationController')
 const { getacceptedstuds } = require('../controllers/adminController')
@@ -13,8 +13,8 @@ router.post('/adminlogin', loginAdmin)
 
 // signup route
 router.post('/adminsignup', signupAdmin)
-
-router.post('/ad', createannouncement)
+router.get('/ad', getallBlocks)
+router.post('/ann', createannouncement)
 router.get('/comp', getcomplain)
 //to display accepted
 router.get('/acceptedstuds', getacceptedstuds)

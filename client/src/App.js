@@ -18,6 +18,7 @@ import Register from "./pages/Register";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import FeesUpload from "./pages/FeesUpload";
 import Mer from "./pages/Mer";
 import Navbar from "./components/Navbar";
 import ClerkNavbar from "./components/ClerkNavbar";
@@ -36,6 +37,7 @@ import Blocks from "./pages/Blocks";
 import PdfUploader from "./Form";
 import StudentInfo from "./studentInfo";
 import StartNavbar from "./components/StartNavbar";
+import Adminann from "./pages/Adminann";
 // import ClerkSignup from "./pages/ClerkSignup";
 import Accepted from "./pages/Accepted";
 import Rejected from "./pages/Rejected";
@@ -49,10 +51,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {admin && <AdminNavbar />} 
-        {clerk && <ClerkNavbar />}  
+        {admin && <AdminNavbar />}
+        {clerk && <ClerkNavbar />}
         {user && <Navbar />}
-        {!user && !clerk && !admin && <StartNavbar/>}
+        {!user && !clerk && !admin && <StartNavbar />}
         <div className="pages">
           <Routes>
             <Route
@@ -79,7 +81,7 @@ function App() {
               path="/signup"
               element={admin ? <Signup /> : <Navigate to="/login" />}
             />
-<Route
+            <Route
               path="/clerk/home"
               element={clerk ? <Print /> : <Navigate to="/clerklogin" />}
             />
@@ -88,7 +90,11 @@ function App() {
               path="/fees"
               element={user ? <Fees /> : <Navigate to="/login" />}
             />
-            <Route path="/allot" element={user?<AllotmentList />:<Navigate to="/login" />} />
+            <Route path="/feesupload" element={<FeesUpload />} />
+            <Route
+              path="/allot"
+              element={user ? <AllotmentList /> : <Navigate to="/login" />}
+            />
             <Route
               path="/home"
               element={user ? <Home /> : <Navigate to="/login" />}
@@ -104,7 +110,7 @@ function App() {
               path="/complains"
               element={user ? <Complains /> : <Navigate to="/login" />}
             />
-             <Route
+            <Route
               path="/complainclerk"
               element={user ? <ComplainClerk /> : <Navigate to="/login" />}
             />
@@ -123,6 +129,10 @@ function App() {
             <Route
               path="/admin/mer"
               element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
+            />
+             <Route
+              path="/admin/ann"
+              element={admin ? <Adminann /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="/admin/acc"
@@ -149,7 +159,7 @@ function App() {
               path="/clerklogin"
               element={!clerk ? <ClerkLogin /> : <Navigate to="/clerk/home" />}
             />
-             <Route
+            <Route
               path="/clerksignup"
               element={!clerk ? <ClerkSignup /> : <Navigate to="/clerk/home" />}
             />
@@ -157,7 +167,10 @@ function App() {
               path="/adminsignup"
               element={!admin ? <AdminSignup /> : <Navigate to="/admin/ad" />}
             />
-            <Route path="/verify" element={admin?<PdfUploader />:<Navigate to="/adminlogin" />}></Route>
+            <Route
+              path="/verify"
+              element={admin ? <PdfUploader /> : <Navigate to="/adminlogin" />}
+            ></Route>
             <Route path="/student-info/:id" element={<StudentInfo />}></Route>
           </Routes>
         </div>

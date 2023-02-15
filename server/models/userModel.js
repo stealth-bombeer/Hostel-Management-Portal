@@ -218,7 +218,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  merit: {
+  regid: {
     type: String,
     required: true,
   },
@@ -251,7 +251,7 @@ userSchema.statics.signup = async function (
   branch,
   category,
   year,
-  merit,
+  regid,
   address,
   gender,
   email,
@@ -266,7 +266,7 @@ userSchema.statics.signup = async function (
     !branch ||
     !category ||
     !year ||
-    !merit ||
+    !regid ||
     !address ||
     !gender
   ) {
@@ -296,7 +296,7 @@ userSchema.statics.signup = async function (
     branch,
     category,
     year,
-    merit,
+    regid,
     address,
     gender,
   });

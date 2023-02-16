@@ -37,6 +37,7 @@ const Navbar = () => {
               <span>{user.year}</span>
               <Link to="/fees">FeePayment</Link>
               <Link to="/allot">Allotment-list</Link>
+              {user.year != 2022 && <Link to="/feesupload">Uploads </Link>}
               <Link to="/complainclerk">ComplainClerk</Link>
               {user.year != 2022 && <Link to="/home">SY</Link>}
               <Link to="/pass">Pass</Link>
@@ -49,9 +50,10 @@ const Navbar = () => {
               <Link to="/Complains">Complaints</Link>
               <button onClick={handleClick}>Log out</button>
             </div>
-          )}</nav>
+          )}
+        </nav>
 
-          {/* <nav>
+        {/* <nav>
 
           {!user && !clerk && !admin && (
             <div>

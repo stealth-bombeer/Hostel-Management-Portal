@@ -42,7 +42,16 @@ const ClerkLogin = () => {
  disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
       </div>
+      <div>
+          {isLoading && (
+            <div>
+              {" "}
+              <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span>
+            </div>
+          )}
+        </div>
     </form>
+
     <div class="form-footer">
     <p><a href="/signup">Create an account</a></p>
     

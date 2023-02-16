@@ -4,11 +4,14 @@ const FeesUpload = () => {
   const { uploads, error, isLoading } = useFeesUpload();
   const [feesReceipt, setFeesReceipt] = useState("");
   const [prevAllot, setPrevAllot] = useState("");
+  const [feesType, setFeesType] = useState();
+  const [allotType, setAllotType] = useState();
 
   const feesUpload = (e) => {
     const file = e.target.files[0];
     setfeesToBase(file);
     console.log(file);
+    setFeesType(file.type);
   };
 
   const setfeesToBase = (file) => {
@@ -21,7 +24,7 @@ const FeesUpload = () => {
   const AllotmentUpload = (e) => {
     const file = e.target.files[0];
     setAllotmentToBase(file);
-    console.log(file.name);
+    setAllotType(file.type);
   };
 
   const setAllotmentToBase = (file) => {
@@ -34,6 +37,13 @@ const FeesUpload = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if (!feesType == "application/pdf" || !allotType == "application/pdf") {
+    //   console.log(feesType, "inside condition ");
+    //   {
+    //     alert("The input field should be pdf type only");
+    //   }
+    //   return;
+    // }
 
     console.log("Submitted th fees and allotment receipt");
     await uploads(feesReceipt, prevAllot);
@@ -96,11 +106,20 @@ const FeesUpload = () => {
           <button
             onSubmit={handleSubmit}
             type="submit"
+            disabled={isLoading}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
           </button>
         </form>
+        <div>
+          {isLoading && (
+            <div>
+              {" "}
+              <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

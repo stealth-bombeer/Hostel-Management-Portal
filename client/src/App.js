@@ -81,7 +81,7 @@ function App() {
             />
             <Route
               path="/signup"
-              element={admin ? <Signup /> : <Navigate to="/login" />}
+              element={admin ? <Signup /> : <Navigate to="/adminlogin" />}
             />
             <Route
               path="/clerk/home"
@@ -92,7 +92,12 @@ function App() {
               path="/fees"
               element={user ? <Fees /> : <Navigate to="/login" />}
             />
-            <Route path="/feesupload" element={<FeesUpload />} />
+
+            <Route
+              path="/feesupload"
+              element={user ? <FeesUpload /> : <Navigate to="/login" />}
+            />
+
             <Route
               path="/allot"
               element={user ? <AllotmentList /> : <Navigate to="/login" />}

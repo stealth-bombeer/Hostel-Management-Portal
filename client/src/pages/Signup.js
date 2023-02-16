@@ -361,7 +361,7 @@ console.log(name);
           required=""
         />
       </div>
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <div className="form-file custom-file">
           <label
             htmlFor="image"
@@ -379,9 +379,9 @@ console.log(name);
           />
           <label for="image" class="btn btn-primary">Browse</label>/
         </div>
-      </div>
+      </div> */}
       <div className="flex items-start mb-6">
-        <div className="flex items-center h-5">
+        {/* <div className="flex items-center h-5">
           <input
             id="remember"
             type="checkbox"
@@ -389,8 +389,8 @@ console.log(name);
             className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
             required=""
           />
-        </div>
-        <label
+        </div> */}
+        {/* <label
           htmlFor="remember"
           className="ml-2 text-sm font-medium text-black-900 dark:text-black-300"
         >
@@ -402,11 +402,13 @@ console.log(name);
             terms and conditions
           </a>
           
-        </label>
+        </label> */}
       </div>
       <button
         onSubmit={handleSubmit}
+
         type="submit"
+        disabled={isLoading}
         className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         Submit
@@ -414,6 +416,9 @@ console.log(name);
     </form>
     {/* {success ? <h2> Success</h2>:<div></div>} */}
   </div>
+
+  {isLoading &&<div> <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span></div>}
+    
   </div>
 </>
 

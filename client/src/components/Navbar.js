@@ -36,6 +36,7 @@ const Navbar = () => {
               <span>{user.email}</span>
               <span>{user.year}</span>
               <Link to="/fees">FeePayment</Link>
+              <Link to="/viewrooms">SeeAllotedRooms</Link>
               <Link to="/allot">Allotment-list</Link>
               {user.year != 2022 && <Link to="/feesupload">Uploads </Link>}
               <Link to="/complainclerk">ComplainClerk</Link>

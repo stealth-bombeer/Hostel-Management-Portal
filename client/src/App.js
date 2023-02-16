@@ -165,6 +165,10 @@ function App() {
               element={admin ? <AdminHome /> : <Navigate to="/adminlogin" />}
             />
             <Route
+              path="/viewrooms"
+              element={user ? <AdminHome /> : <Navigate to="/login" />}
+            />
+            <Route
               path="/adminlogin"
               element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
             />

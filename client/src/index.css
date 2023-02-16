@@ -907,3 +907,10 @@ td {
   transform: scale(1.1);
   box-shadow: 0 0 10px lightblue;
 }
+
+.fragment {
+  display: flex;
+  flex-direction: column;
+  margin: 34px;
+  justify-content: space-around;
+}

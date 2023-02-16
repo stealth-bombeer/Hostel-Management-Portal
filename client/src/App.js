@@ -41,6 +41,8 @@ import Adminann from "./pages/Adminann";
 // import ClerkSignup from "./pages/ClerkSignup";
 import Accepted from "./pages/Accepted";
 import Rejected from "./pages/Rejected";
+import PdfViewer from "./seniorForm";
+import SeniorStudentInfo from "./seniorStudentInfo";
 
 const socket = io.connect("http://localhost:4000");
 
@@ -130,7 +132,7 @@ function App() {
               path="/admin/mer"
               element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
             />
-             <Route
+            <Route
               path="/admin/ann"
               element={admin ? <Adminann /> : <Navigate to="/adminlogin" />}
             />
@@ -172,6 +174,8 @@ function App() {
               element={admin ? <PdfUploader /> : <Navigate to="/adminlogin" />}
             ></Route>
             <Route path="/student-info/:id" element={<StudentInfo />}></Route>
+            <Route path="/verify-senior" element={<PdfViewer />}></Route>
+            <Route path="/senior-student-info/:id" element={<SeniorStudentInfo />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

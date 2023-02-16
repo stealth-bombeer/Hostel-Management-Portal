@@ -32,6 +32,7 @@ const Navbar2 = () => {
               <Link to="/admin/ann">Announce</Link>
               <Link to="/admin/acc">Accepted-students</Link>
               <Link to="/admin/rej">Rejected-students</Link>
+              <Link to="/adminnotification">ViewAndDelAnnouncement</Link>
             </div>
             
           )}

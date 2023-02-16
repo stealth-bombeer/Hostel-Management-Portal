@@ -31,6 +31,7 @@ import io from "socket.io-client";
 import Pass from "./pages/Pass";
 import Al from "./components/Al";
 import Notification from "./pages/Notification";
+import AdminNotification from "./pages/AdminNotification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
@@ -132,6 +133,11 @@ function App() {
             <Route
               path="/notification"
               element={user ? <Notification /> : <Navigate to="/login" />}
+            />
+
+<Route
+              path="/adminnotification"
+              element={ admin?<AdminNotification />:<Navigate to="/adminlogin" /> }
             />
             <Route
               path="/admin/mer"

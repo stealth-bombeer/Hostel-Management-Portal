@@ -47,7 +47,21 @@ catch(error)
   
 //   res.status(200).json(workout)
 // }
+const deletenotification = async (req, res) => {
+  const { id } = req.params
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({error: 'No such workout'})
+  }
+
+  const ann = await Announcement.findOneAndDelete({_id: id})
+
+  if(!ann) {
+    return res.status(400).json({error: 'No such workout'})
+  }
+
+  res.status(200).json(ann)
+}
 
 // create new workout
 const createannouncement = async (req, res) => {
@@ -118,5 +132,6 @@ const createannouncement = async (req, res) => {
 module.exports = {
     getannouncement,
  createannouncement,
- getcomplain
+ getcomplain,
+ deletenotification
 }

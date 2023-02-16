@@ -90,7 +90,12 @@ function App() {
               path="/fees"
               element={user ? <Fees /> : <Navigate to="/login" />}
             />
-            <Route path="/feesupload" element={<FeesUpload />} />
+
+            <Route
+              path="/feesupload"
+              element={user ? <FeesUpload /> : <Navigate to="/login" />}
+            />
+
             <Route
               path="/allot"
               element={user ? <AllotmentList /> : <Navigate to="/login" />}
@@ -130,7 +135,7 @@ function App() {
               path="/admin/mer"
               element={admin ? <Mer /> : <Navigate to="/adminlogin" />}
             />
-             <Route
+            <Route
               path="/admin/ann"
               element={admin ? <Adminann /> : <Navigate to="/adminlogin" />}
             />

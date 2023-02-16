@@ -41,9 +41,16 @@ const AdminSignup = () => {
     {error && <div className="error">{error}</div>}
     </div>
   </form>
+  <div>
+        {isLoading && (
+          <div>
+            {" "}
+            <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span>
+          </div>
+        )}
+      </div>
   <div class="form-footer">
   <p><a href="/login">Already a user?</a></p>
-  
 </div>
   </div>
   )

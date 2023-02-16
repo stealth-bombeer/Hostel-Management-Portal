@@ -1,10 +1,11 @@
 const express = require('express')
 const multer = require("multer");
 const { Accepted, Rejected } = require("../models/model");
-const register = require("../models/registerModel")
+const register = require("../models/registerModel");
+const upload = require("../models/feesAllotmentModel");
 const router = express.Router()
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage });
 
 
 router.get("/api/collections", (req, res) => {
@@ -16,6 +17,12 @@ router.get("/api/collections", (req, res) => {
 router.get("/api/collections/:id", (req, res) => {
     console.log(`id: ${req.body}`)
     register.find({})
+        .then(collections => res.json(collections))
+        .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.get("/api/get-pdfs", (req, res) => {
+    upload.find({})
         .then(collections => res.json(collections))
         .catch(err => res.status(400).json("Error: " + err));
 });
@@ -81,7 +88,7 @@ router.delete('/api/delete/:id', async (req, res) => {
 });
 
 
-router.post("/api/submitRejected", upload.single("pdf"), async (req, res) => {
+router.post("/api/submitRejected", async (req, res) => {
 
     try {
         const document = new Rejected({

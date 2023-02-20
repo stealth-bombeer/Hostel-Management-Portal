@@ -22,9 +22,9 @@ const AdminHome = () => {
     fetchWorkouts();
   }, []);
 
-  const handleSelectRoom = (students) => {
-    setSelectedBlockNo(students);
-  }
+  // const handleSelectRoom = (students) => {
+  //   setSelectedBlockNo(students);
+  // }
 
   const filteredDat = selectedBlockNo
     ? dat.filter((item) => item.BlockNo === selectedBlockNo)

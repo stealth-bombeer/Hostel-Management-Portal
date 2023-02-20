@@ -78,7 +78,7 @@ const Accepted = () => {
         console.log(st)
         const st1=[
           ...st.filter((student) => {
-            return student.gender == "Female" ;
+            return student.gender == "Female"  ;
           }),
         ];
         console.log(st1);
@@ -89,36 +89,24 @@ const Accepted = () => {
         setGls([...st1.sort((a, b) => a.merit - b.merit)]);
         console.log(gls);
         console.log(students);
+        console.log(branch);
       });
 
 
   }, []);
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    
-    console.log(branch);
-    setFilter([
-        ...dat.filter((fil) => {
-          return fil.branch === branch  //&& user.alloted!=="1";
-        }),
-      ]);
-      setTimeout(() => {
-        console.log(filter);
-        setTemp(true);
-      }, 1000);
 
-  
-  }
+  console.log(branch)
+ 
+  const filteredDat = branch
+  ? gls.filter((item) => item.course == branch)
+  : gls;
 
-  
-
-  console.log(accepted);
-  
-
-
+  const filteredDat1 = branch
+  ? bys.filter((item) => item.course == branch)
+  : bys;
     return ( <>
 
-{ !loading &&<form className="form" id="form1" onSubmit={handleSubmit}>
+{/* { !loading &&<form className="form" id="form1" onSubmit={handleSubmit}> */}
       
       <div className="wrap-input100">
                             <label>Choose branch:</label>
@@ -151,7 +139,7 @@ const Accepted = () => {
 
                             
 
-                            <button
+                            {/* <button
                             onClick={handleSubmit}
                             type="submit"
                             className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -162,7 +150,7 @@ const Accepted = () => {
 
                           
 
-   </form>}
+   </form>} */}
     
     <div class="print__section">
         <div class="container">
@@ -192,7 +180,7 @@ const Accepted = () => {
                   {/* {accepted &&
                     accepted.map((acc) => {
                        */}
-                   {isBoys  && bys.map((acc) => {
+                   {isBoys  && filteredDat1.map((acc) => {
                 //    {temp && filter.map((acc) => {
                       return(
                         <tr key={acc._id}>
@@ -235,7 +223,7 @@ const Accepted = () => {
                   {/* {accepted &&
                     accepted.map((acc) => {
                        */}
-      {setGls} { gls.map((acc) =>  {
+      {setGls} { filteredDat.map((acc) =>  {
                       return(
                         <tr key={acc._id}>
                           <td>{acc.name}</td>

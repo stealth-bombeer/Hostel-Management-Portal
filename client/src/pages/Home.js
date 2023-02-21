@@ -185,63 +185,66 @@ const Home = () => {
     //   <WorkoutForm />
     // </div>
    
-    <div className="relative w-full lg:max-w-sm">
-          { !loading && <form onSubmit={handleSubmit}>
+    <div className="relative w-full mx-auto">
+  {!loading && (
+    <form onSubmit={handleSubmit}>
+      Block:
+      <select value={BlockNo} onChange={(e) => setBlockNo(e.target.value)}>
+        <option value="" selected>--Select--</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+      </select>
 
-            Block:no
-            <select
-  value={BlockNo}
-  onChange={(e) => setBlockNo(e.target.value)}
->
-  <option value="" selected>--Select--</option>
-  <option value="A">A</option>
-  <option value="B">B</option>
-  <option value="C">C</option>
-  <option value="D">D</option>
-  <option value="E">E</option>
-  <option value="F">F</option>
-</select>
+      Floor:
+      <select value={FloorNo} onChange={(e) => setFloorNo(e.target.value)}>
+        <option value="" selected>--Select--</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
 
-            Floor:no
-            <select
-              // className={emptyFields.includes("RoomNo") ? "error" : ""}
-              value={FloorNo}
-              onChange={(e) => setFloorNo(e.target.value)}
-            >
-              <option value="" selected>--Select--</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              
-             
-            </select>
-            <button>Search</button>
-      </form>}
+      <button>Search</button>
+    </form>
+  )}
 
-      <table>
-    <tr>
-          <th> Room No</th>
-          <th> Occupied</th>
-          <th> Select</th>
-          
-          </tr>
-      {temp && rm.map((date) => (
-       <tr key={date._id}>
-         
-         <td>{date.RoomNo}</td>
-         <td>{date.Students.length}</td>
-         <td><button onClick={() => {setRoomNo(date.RoomNo);setTimeout(() => {
-      handleSelect()
-    }, 1000);}}>Select</button></td>
-         
-       </tr>
-     ))}
-     </table>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+    {temp &&
+      rm.map((date) => (
+        <div key={date._id} className="border border-gray-200 shadow-md rounded-lg p-4 bg-yellow-100">
+          <h3 className="text-lg font-medium">{date.RoomNo}</h3>
+          <div className="mt-2">
+            <p className="text-sm text-gray-500">
+              Occupied: {date.Students.length}
+            </p>
           </div>
+          <div className="mt-4">
+            <button
+              onClick={() => {
+                setRoomNo(date.RoomNo);
+                setTimeout(() => {
+                  handleSelect();
+                }, 1000);
+              }}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Select
+            </button>
+          </div>
+        </div>
+      ))}
+  </div>
+</div>
+
+
+
   )
 }
 

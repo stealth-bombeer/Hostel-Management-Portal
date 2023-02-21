@@ -209,11 +209,25 @@ const mongoose = require('mongoose')
 // }
 const getBlock = async (req, res) => {
   const id = req.id;
+  let cap;
+  if(req.RoomNo==="402")
+  {
+    cap=4;
+    console.log("doen")
+  }
+  else{
+    cap=2;
+    console.log("done")
+    console.log(cap)
+  }
 
-  const names = await Blockfloor.find({ id, "Students.2": { $exists: false } }).sort({ createdAt: 1 });
+  const names = await Blockfloor.find({ id, [`Students.${cap}`]: { $exists: false } }).sort({ createdAt: 1 });
 
   res.status(200).json(names);
 };
+
+
+
 
 
 

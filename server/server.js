@@ -2,11 +2,14 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cron = require('node-cron');
 const workoutRoutes = require("./routes/workouts");
 const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
 const docRoutes = require("./routes/docRoutes")
 const clerkRoutes = require("./routes/clerk");
+const Complain = require('./models/complainModel')
+
 // const express = require("express");
 // const mongoose = require("mongoose");
 // // const workoutRoutes = require("./routes/workouts");
@@ -40,7 +43,15 @@ app.use((req, res, next) => {
   next();
 });
 const server = http.createServer(app);
-
+cron.schedule('0 0 1 * *', async () => {
+  try {
+    // Use Mongoose to delete all documents from the collection
+    await Complain.deleteMany({});
+    console.log('Collection emptied successfully!');
+  } catch (err) {
+    console.error(err);
+  }
+});
 // routes
 app.use('/', docRoutes);
 app.use("/api/workouts", workoutRoutes);

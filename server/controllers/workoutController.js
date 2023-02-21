@@ -322,7 +322,7 @@ const createAlloted = async (req, res) => {
 // }
 const createcomplain = async (req, res) => {
   console.log("Inside createcomplain")
-  const {name,number,block,roomno,complain} = req.body
+  const {name,number,block,roomno,complain,date,compdetail} = req.body
 
   let emptyFields = []
   if(!name) {
@@ -340,6 +340,9 @@ const createcomplain = async (req, res) => {
   if(!complain) {
     emptyFields.push('complain')
   }
+  if(!compdetail) {
+    emptyFields.push('compdetail')
+  }
   
   if(emptyFields.length > 0) {
     return res.status(400).json({ error: 'Please fill in all the fields', emptyFields })
@@ -351,7 +354,7 @@ const createcomplain = async (req, res) => {
     // {
     //   res.status(400).json({error: error.message})
     // }
-  const comp = await Complain.create({name,number,block,roomno,complain})
+  const comp = await Complain.create({name,number,block,roomno,complain,date,compdetail})
   res.status(200).json(comp)
   }
   catch(error){

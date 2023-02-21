@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -7,11 +7,20 @@ const ComplainClerk = () => {
   const [roomno, setRoomno] = useState("");
   const [complain, setComplain] = useState("");
   const [error, setError] = useState("");
+  const [dateTime, setDateTime] = useState(new Date());
+  const [compdetail, setCompdetail] = useState("");
   const { user } = useAuthContext();
   // const name = user.name;
   // const number = user.number;
   // const handleSubmit = async(e) => {
   //   e.preventDefault();
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDateTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +31,12 @@ const ComplainClerk = () => {
     // }
     const name = user.name;
     const number =user.number
-    const details = {  name,number,block, roomno, complain };
+    const date = dateTime.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).slice(0,2)
+    const details = {  name,number,block, roomno, complain ,date,compdetail};
 
     const response = await fetch("/api/workouts/complainclerk", {
       method: "POST",
@@ -45,6 +59,7 @@ const ComplainClerk = () => {
       setComplain("");
       setRoomno("");
       setError("");
+      setCompdetail("");
     }
   };
 
@@ -52,6 +67,14 @@ const ComplainClerk = () => {
 
   return (
     <div>
+       <div>
+      <p>Current date and time: {dateTime.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).slice(0,2)
+}</p>
+    </div>
       {/* component */}
       {/* Container */}
       <div className="container mx-auto">
@@ -132,6 +155,26 @@ const ComplainClerk = () => {
                       <option value="water">water</option>
                       <option value="electricity">electricity</option>
                     </select>
+                  </div>
+                  <div>
+                  <div className="mb-4 md:mr-2 md:mb-0">
+                    <label
+                      className="block mb-2 text-sm font-bold text-gray-700"
+                      htmlFor="firstName"
+                    >
+                      Description about your complain
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      id="floating_first_name"
+                      name="user_name"
+                      type="text"
+                      placeholder="Describe complain"
+                      required=" "
+                      value={compdetail}
+                      onChange={(e) => setCompdetail(e.target.value)}
+                    />
+                  </div>
                   </div>
                   <button
                     type="submit"

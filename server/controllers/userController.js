@@ -29,7 +29,8 @@ const loginUser = async (req, res) => {
     const name = user.name;
     const number = user.number;
     const alloted = user.alloted;
-    res.status(200).json({ name, number, year, gender, email, token, alloted });
+    const feesUpload=user.feesUpload;
+    res.status(200).json({ name, number, year, gender, email, token, alloted,feesUpload});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -39,7 +40,6 @@ const loginUser = async (req, res) => {
 const feesUpload = async (req, res) => {
   const { name,feesReceipt, prevAllot } = req.body;
   console.log("inside feesUpload userctrller");
-
 
   try 
   {
@@ -69,6 +69,11 @@ const feesUpload = async (req, res) => {
         url:prevAllotmentResult.secure_url,
       }
     })
+
+const updateUser=await User.findOneAndUpdate({name},{feesUpload:'1'},{
+  returnOriginal:false
+})
+  console.log('FInd ',updateUser);  
   res.status(200).json({upload})
   } 
   catch (error) {

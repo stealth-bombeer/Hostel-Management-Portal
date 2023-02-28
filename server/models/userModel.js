@@ -239,6 +239,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  feesUpload:{
+    type:String,
+    default:'0'
+  },
   alloted: {
     type:String,
   }

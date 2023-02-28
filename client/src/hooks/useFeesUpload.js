@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
+import { useLogout } from './useLogout';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 export const useFeesUpload = () => {
+  const { logout } = useLogout();
   const { user } = useAuthContext();
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
@@ -35,8 +38,9 @@ export const useFeesUpload = () => {
       {
         alert("sucess");
       }
-      navigate("/");
-
+      console.log("before");
+    logout();
+    console.log("fetr")
       // update loading state
       setIsLoading(false);
     }

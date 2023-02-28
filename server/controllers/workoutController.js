@@ -209,8 +209,10 @@ const mongoose = require('mongoose')
 // }
 const getBlock = async (req, res) => {
   const id = req.id;
+  req.bod
   let cap;
-  if(req.RoomNo==="402")
+  const temp = await Blockfloor.find({})
+  if(temp.RoomNo==="403")
   {
     cap=4;
     console.log("doen")

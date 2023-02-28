@@ -61,7 +61,7 @@ const Home = () => {
       logout();
     }
     if(!response.ok) {
-      if(json.error=='less than 3')
+      if(json.error=='Full')
       alert(json.error)
     }
 

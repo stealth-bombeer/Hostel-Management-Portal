@@ -209,22 +209,27 @@ const mongoose = require('mongoose')
 // }
 const getBlock = async (req, res) => {
   const id = req.id;
-  let cap;
-  if(req.RoomNo==="402")
-  {
-    cap=4;
-    console.log("doen")
+  
+  try {
+    const blocks = await Blockfloor.find({
+      $or: [
+        { BlockNo: 'D', RoomNo: { $in: [201, 202, 203, 204, 101, 102, 103, 104, 301, 302, 303, 304, 401, 402, 403, 404] }, 'Students.3': { $exists: false } },
+        { BlockNo: 'D', RoomNo: { $in: [420, 421, 413, 414, 415, 416, 408, 409, 323, 322, 327, 315, 316, 317, 318, 309, 310, 311, 220, 221, 222, 208, 122, 123, 110] }, 'Students.1': { $exists: false } },
+        { BlockNo: 'D', RoomNo: { $in: [405,406,407,410,411,412,417,418,419,422,423,305,306,307,308,312,313,314,319,320,321,324,325,326,205,206,207,209,210,211,212,213,214,215,216,217,218,219,223,224,105,106,107,108,109,111,112,113,114,115,116,117,118,119,120,121,124,125,126] }, 'Students.2': { $exists: false } },
+        { BlockNo: { $in: ['A', 'B', 'C', 'E', 'F'] }, 'Students.2': { $exists: false } }
+      ]
+    });
+    res.json(blocks);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  else{
-    cap=2;
-    console.log("done")
-    console.log(cap)
-  }
+  };
 
-  const names = await Blockfloor.find({ id, [`Students.${cap}`]: { $exists: false } }).sort({ createdAt: 1 });
 
-  res.status(200).json(names);
-};
+
+
+
+
 
 
 
@@ -253,20 +258,33 @@ const getBlock = async (req, res) => {
 const createBlock = async (req, res) => {
   const {BlockNo,FloorNo,Email,RoomNo} = req.body
   
-  try {
-    
-    
-    const blockfloor = await Blockfloor.findOne({ BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo });
+ 
 
-    if (blockfloor.Students.length < 3) {
-      const result = await Blockfloor.updateOne(
-        { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo },
-        { $push: { Students: { Name: Email } } }
-      );
-      // check result and return updated document
-    } else {
-      throw new Error('less than 3');
-    }
+    try {
+      const blockfloor = await Blockfloor.findOne({ BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo });
+    
+      let maxStudents;
+      if (BlockNo === 'D') {
+        if ([201, 202, 203, 204, 101, 102, 103, 104, 301, 302, 303, 304, 401, 402, 403, 404].includes(RoomNo)) {
+          maxStudents = 4;
+        } else if ([420, 421, 413, 414, 415, 416, 408, 409, 323, 322, 327, 313, 314, 315, 316, 317, 318, 309, 310, 311, 220, 221, 222, 208, 122, 123, 110].includes(RoomNo)) {
+          maxStudents = 2;
+        } else {
+          maxStudents = 3;
+        }
+      } else {
+        maxStudents = 2;
+      }
+    
+      if (blockfloor.Students.length < maxStudents) {
+        const result = await Blockfloor.updateOne(
+          { BlockNo: BlockNo, FloorNo: FloorNo, RoomNo: RoomNo },
+          { $push: { Students: { Name: Email } } }
+        );
+        // check result and return updated document
+      } else {
+        throw new Error('Full');
+      }
     
     
     const c =await User.updateOne(

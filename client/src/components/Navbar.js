@@ -13,7 +13,7 @@ const Navbar = () => {
   };
   const handleChat = () => {};
 
-  console.log(user);
+  console.log(user,"inside authcontext");
   return (
     <header>
       <div className="container">
@@ -38,11 +38,12 @@ const Navbar = () => {
               <Link to="/fees">FeePayment</Link>
               <Link to="/viewrooms">SeeAllotedRooms</Link>
               <Link to="/allot">Allotment-list</Link>
-              {user.year != 2022 && <Link to="/feesupload">Uploads </Link>}
+              {user.year != 2022 &&
+               user.feesUpload!=1 && 
+               <Link to="/feesupload">Uploads </Link>}
               <Link to="/complainclerk">ComplainClerk</Link>
-              {user.year != 2022 && <Link to="/home">SY</Link>}
+              {user.year != 2022 && user.feesUpload== 1 && user.alloted!=1 &&<Link to="/home">SY</Link>}
               <Link to="/pass">Pass</Link>
-              <Link to="/blocks">Blocks</Link>
               <Link to="/rules">Hostel Rules</Link>
               {/* <Link to="/notification">Notification</Link> */}
 

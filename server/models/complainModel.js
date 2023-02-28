@@ -29,7 +29,20 @@ name: {
     required: true,
     // unique: true
 
+  },
+  date: {
+    type: String,
+    required: true,
+    // unique: true
+
+  },
+  compdetail: {
+    type: String,
+    required: true,
+    // unique: true
+
   }
+
 //   Slot: {
 //     type: Number,
 //     required: true,

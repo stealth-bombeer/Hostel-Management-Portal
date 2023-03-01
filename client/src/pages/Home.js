@@ -15,14 +15,14 @@ const Home = () => {
   const [RoomNo, setRoomNo] = useState(" ");
   // const [Email, setEmail] = useState(" ");
   const [rm, setRm] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [dat, setDat] = useState([]);
   const { logout } = useLogout();
 
   const handleSelect = async (floor, block, room) => {
     const Email = user.name;
     const roomDetails = { BlockNo: block, FloorNo: floor, Email, RoomNo: room };
-
+      setLoading(true);
     console.log(roomDetails);
 
     const response = await fetch("/api/workouts/home", {
@@ -40,7 +40,10 @@ const Home = () => {
       logout();
     }
     if (!response.ok) {
-      if (json.error == "less than 3") alert(json.error);
+      // if (json.error == "Full") 
+      alert(json.error);
+      window.location.reload(true);
+      
     }
   };
   const handleSubmit = async (e) => {
@@ -134,6 +137,7 @@ const Home = () => {
             </div>
             <div className="mt-4">
               <button
+              disabled={loading}
                 onClick={() =>
                   handleSelect(date.FloorNo, date.BlockNo, date.RoomNo)
                 }
@@ -145,7 +149,10 @@ const Home = () => {
           </div>
         ))}
       </div>
+      {loading &&<div> <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span></div>}
     </div>
+        
+
   );
 };
 

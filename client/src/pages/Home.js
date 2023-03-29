@@ -81,76 +81,88 @@ const Home = () => {
     fetchWorkouts();
   }, [user]);
 
+ 
+
   return (
-    // <div className="home">
-    //   <div className="workouts">
-    //     {workouts && workouts.map((workout) => (
-    //       <WorkoutDetails key={workout._id} workout={workout} />
-    //     ))}
-    //   </div>
-    //   <WorkoutForm />
-    // </div>
+   
 
     <div className="relative w-full mx-auto">
-      {!loading && (
-        <form onSubmit={handleSubmit}>
-          Block:
-          <select value={BlockNo} onChange={(e) => setBlockNo(e.target.value)}>
-            <option value="" selected>
-              --Select--
-            </option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            <option value="E">E</option>
-            <option value="F">F</option>
-          </select>
-          Floor:
-          <select value={FloorNo} onChange={(e) => setFloorNo(e.target.value)}>
-            <option value="" selected>
-              --Select--
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
-          <button>Search</button>
-        </form>
-      )}
+  {!loading && (
+    <form onSubmit={handleSubmit}>
+      Block:
+      <select value={BlockNo} onChange={(e) => setBlockNo(e.target.value)}>
+        <option value="" selected>
+          --Select--
+        </option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+      </select>
+      Floor:
+      <select value={FloorNo} onChange={(e) => setFloorNo(e.target.value)}>
+        <option value="" selected>
+          --Select--
+        </option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <button>Search</button>
+    </form>
+  )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {rm?.map((date) => (
-          <div
-            key={date._id}
-            className="border border-gray-200 shadow-md rounded-lg p-4 bg-yellow-100"
-          >
-            <h3 className="text-lg font-medium">{date.RoomNo}</h3>
-            <div className="mt-2">
-              <p className="text-sm text-gray-500">
-                Occupied: {date.Students.length}
-              </p>
-            </div>
-            <div className="mt-4">
-              <button
-              disabled={loading}
-                onClick={() =>
-                  handleSelect(date.FloorNo, date.BlockNo, date.RoomNo)
-                }
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Select
-              </button>
-            </div>
+  {(BlockNo === "" || FloorNo === "") && !loading ? (
+    <p className="mt-4">Select a block no and floor no</p>
+  ) : rm?.length ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
+      {rm?.map((date) => (
+        <div
+          key={date._id}
+          className="border border-gray-200 shadow-md rounded-lg p-4 bg-yellow-100"
+        >
+          <h3 className="text-lg font-medium">{date.RoomNo}</h3>
+          <div className="mt-2">
+            <p className="text-sm text-gray-500">
+              Occupied: {date.Students.length}
+            </p>
           </div>
-        ))}
-      </div>
-      {loading &&<div> <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span></div>}
+          <div className="mt-4">
+            <button
+              onClick={() => {
+                if (window.confirm("Are you sure you want to select this room?")) {
+                  handleSelect(date.FloorNo, date.BlockNo, date.RoomNo);
+                }
+              }}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Select
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
+  ) : (
+    <div className="mt-4 text-center text-gray-500 font-medium text-lg">
+    <p >Select A Valid RoomNo and BlockNo</p>
+    <p >Block A: 2 Floors</p>
+    <p >Block B: 2 Floors</p>
+    <p >Block C: 3 Floors</p>
+    <p >Block D: 4 Floors</p>
+    <p >Block E: 7 Floors</p>
+    </div>
+
+  )}
+  {loading &&<div> <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span></div>}
+</div>
+
+
         
 
   );

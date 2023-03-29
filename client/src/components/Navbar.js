@@ -42,8 +42,8 @@ const Navbar = () => {
                user.feesUpload!=1 && 
                <Link to="/feesupload">Uploads </Link>}
               <Link to="/complainclerk">ComplainClerk</Link>
-              {user.year != 2022 && user.feesUpload== 1 && user.alloted!=1 &&<Link to="/home">SY</Link>}
-              {/* <Link to="/home">SY</Link> */}
+              {/* {user.year != 2022 && user.feesUpload== 1 && user.alloted!=1 &&<Link to="/home">SY</Link>} */}
+              <Link to="/home">SY</Link>
               <Link to="/pass">Pass</Link>
               <Link to="/rules">Hostel Rules</Link>
               {/* <Link to="/notification">Notification</Link> */}

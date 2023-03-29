@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./deletebutton.css";
 
 const Notification = () => {
 
@@ -36,29 +37,32 @@ const Notification = () => {
     return ( 
         <>
 {/* <div className="bgColour"> */}
-  <div
+  {/* <div
     
     className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
     role="alert"
-  >
-    <span className="fontmedium">Notification alert! 
+  > */}
+    {/* <span className="fontmedium">Notification alert! 
 </span> Behold!!!
-<br/>
+<br/> */}
 <br/>
 <div>
+
 {notifi && notifi.map((not) => (
+  
   <div key={not._id}>
-  <div >
+    {/* <p >ANNOUNCEMENT!!!</p> */}
+  <div class="w3-panel w3-pale-green w3-border"style={{fontSize:"25px"}} >
     {not.announcement}
   </div>
-  <button className="material-symbols-outlined" onClick={()=>handleClick(not)}>delete</button>
+  <button className="Button1" onClick={()=>handleClick(not)}>delete</button>
   <br/>
   <br/>
   
   </div>))}
     </div>
 
-  </div>
+  {/* </div> */}
   {/* <div className="cards">
   <div className="mohatsavcard1"> 
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">

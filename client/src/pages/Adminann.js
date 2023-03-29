@@ -27,9 +27,9 @@ const Adminann = () => {
 
   return (
     <div className="announcement-box">
-      <h2>Make an announcement</h2>
-      <form >
-      
+      {/* <h2>Make an announcement</h2> */}
+      <form className="centerann" >
+      <h3 >Make an announcement</h3>
         <textarea
           required
           rows="5" cols="80"

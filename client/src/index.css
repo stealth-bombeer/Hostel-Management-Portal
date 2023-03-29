@@ -29,7 +29,7 @@ header a {
 
 .pages {
   max-width: 1400px;
-  padding: 20px;
+  padding: 500px;
   margin: 0 auto;
 }
 
@@ -601,7 +601,7 @@ form.login {
 .registration {
   margin: 0;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -626,7 +626,7 @@ form.login {
 
 table {
   border: 2px;
-  /* color: solid forestgreen; */
+  /* color: brown; */
   width: 800px;
   height: 200px;
 }
@@ -913,4 +913,8 @@ td {
   flex-direction: column;
   margin: 34px;
   justify-content: space-around;
+}
+.centerann{
+  padding: 50px;
+  margin-left:20%;
 }

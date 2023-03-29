@@ -103,7 +103,7 @@ console.log(name);
         <div className="registration">
   <meta charSet="UTF-8" />
   <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
   <title>Document</title>
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css"
@@ -112,7 +112,7 @@ console.log(name);
   
 
   
-  <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-white-800 dark:border-gray-700 mt-6">
+  <div className="w-full max-w-sm p-4 bg-white border border-gray-2000 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-white-8000 dark:border-gray-7000 mt-6">
     <h1 className="text-center">Admit Form</h1>
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 mb-6 mt-6 md:grid-cols-2">

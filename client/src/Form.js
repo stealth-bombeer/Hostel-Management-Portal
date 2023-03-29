@@ -132,12 +132,14 @@ const App = () => {
     return (
         <div>
             <h1>Documents</h1>
-            <table>
+            <table style={{ margin: "auto" }}>
                 <tr>
+                    <thead>
                     <th>Student Name</th>
+                    </thead>
                 </tr>
                 <tr>
-
+                <tbody>
                     <td>
                         {documents.map(document => (
                             <div key={document._id} className="doc-content">
@@ -147,6 +149,7 @@ const App = () => {
                             </div>
                         ))}
                     </td>
+                    </tbody>
                 </tr>
             </table>
         </div>

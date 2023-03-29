@@ -3,6 +3,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import { useAuthContext2 } from "./hooks/useAuthContext2";
 import { useAuthContext3 } from "./hooks/useAuthContext3";
 import AdminHome from "./pages/AdminHome";
+import AdminHomeMain from "./pages/AdminHomeMain";
 import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
 import ClerkLogin from "./pages/ClerkLogin";
@@ -165,12 +166,16 @@ function App() {
               element={admin ? <AdminHome /> : <Navigate to="/adminlogin" />}
             />
             <Route
+              path="/admin/home"
+              element={admin ? <AdminHomeMain /> : <Navigate to="/adminlogin" />}
+            />
+            <Route
               path="/viewrooms"
               element={user ? <AdminHome /> : <Navigate to="/login" />}
             />
             <Route
               path="/adminlogin"
-              element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
+              element={!admin ? <AdminLogin /> : <Navigate to="/admin/home" />}
             />
             <Route
               path="/clerklogin"

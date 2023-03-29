@@ -162,7 +162,7 @@ const Complains = () => {
           className="w-full h-auto bg-gray-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
           style={{
             backgroundImage:
-              'url("https://static.zollege.in/public/college_data/images/campusimage/14388420336.PNG")'
+              'url("https://images.static-collegedunia.com/public/college_data/images/campusimage/1414221202VJTI_Main_Entrance.JPG")'
           }}
         />
         {/* Col */}

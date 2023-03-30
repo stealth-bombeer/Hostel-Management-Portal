@@ -48,29 +48,14 @@ const Navbar = () => {
               {/* <Link to="/home">SY</Link> */}
               <Link to="/pass">Pass</Link>
               <Link to="/rules">Hostel Rules</Link>
-              {/* <Link to="/notification">Notification</Link> */}
-
-              {/* <button onClick={handleChat}>Chat</button> */}
-              {/* <Link to="/chatapp">Chat</Link> */}
+             
               <Link to="/Complains">Complaints</Link>
               <button onClick={handleClick}>Log out</button>
             </div>
           )}
         </nav>
 
-        {/* <nav>
-
-          {!user && !clerk && !admin && (
-            <div>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-              <Link to="/adminlogin">Admin-Login</Link>
-              <Link to="/clerklogin">Clerk-Login</Link>
-              <Link to="/adminsignup">Admin-Signup</Link>
-              <Link to="/clerksignup">CLerk-Signup</Link>
-            </div>
-          )}
-        </nav> */}
+        
       </div>
     </header>
   );

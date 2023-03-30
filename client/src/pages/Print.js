@@ -86,104 +86,61 @@ const Print = () => {
                           </div>
                          
                  
-      <div class="print__section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              {/* <button onClick={handlePrint} className="print__button">
-                {" "}
-                Print{" "}
-              </button> */}
-              <div ref={componentRef} className="card">
-                <div class="float__start">
-                  <h1 >Hostel Complains</h1>
-                </div>
-                <hr />
-                <div class="float__infoss">
-                  {/* <ul>
-                <li> Name : <span> Dr Andrew C S Koh </span> </li>
-                <li> Email : <span> Andrew@gmail.com </span> </li>
-                <li> Gender : <span> Male </span> </li>
-                <li> Date of Birth : <span> 07-24-1982</span> </li>
-                <li> Phone No: <span> </span> 9856231456 </li>
-                <li> Address : <span> 26 Wyle Cop, Shrewsbury, Shropshire, SY1 1XD </span> </li>
-                <li> Website : <span> www.Andrew.com </span> </li>
-                <li> Country : <span> United states </span> </li> 
-              </ul> */}
-              {/* <table>
-                          <tr>
-                            <th>Name </th>
-                            <th>phone number</th>
-                            <th>Room No.</th>
-                            <th>Block No.</th>
-                            <th>Complain</th>
-                          </tr> */}
-              {/* </table> */}
-                  {/* {complains &&
-                    complains.map((com) => (
-                      <div key={com._id}> */}
-                      <div className="App">
-                        <table className="center">
-                          <tr>
-                            <th>Name </th>
-                            <th>phone number</th>
-                            <th>Room No.</th>
-                            <th>Block No.</th>
-                            <th>Complain</th>
-                            <th>Date</th>
-                            <th>Complain Description</th>
-                          </tr>
-
+                          <div class="print__section">
+  <div class="container mx-auto">
+    <div class="row">
+      <div class="col-md-12">
+        <div ref={componentRef} class="card">
+          <div class="float__start">
+            <h1 class="text-3xl sm:text-4xl">Hostel Complains</h1>
+          </div>
+          <hr class="my-4" />
+          <div class="float__infoss">
+            <div class="App">
+              <table class="w-full text-left whitespace-no-wrap">
+                <thead>
+                  <tr class="bg-gray-100 border-b">
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Name</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Phone Number</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Room No.</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Block No.</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Complain</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Date</th>
+                    <th class="px-4 py-2 font-medium text-sm text-gray-700">Complain Description</th>
+                  </tr>
+                </thead>
+                <tbody>
                   {complains &&
                     filteredDat.map((com) => {
-                      
-                      return(
-                        <tr key={com._id}>
-                          <td>{com.name}          </td>
-                          <td>{com.number}</td>
-                          <td>{com.roomno}</td>
-                          <td>{com.block}</td>
-                          <td>{com.complain}</td>
-                          <td>{com.date}</td>
-                          <td>{com.compdetail}</td>
-                        </tr> 
-
-                        )  
-                       
-                       } )
-                 }
-                        </table>
-
-                        </div>   
-
-             {/* <button onClick={handlePrint} className="print__button">
-                {" "}
-                Print{" "}
-              </button>
- */}
-
-                {/* <button
-                   type="submit"
-                   style={{marginLeft: "50%",
-                  marginRight:"50%"}}
-                   className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                   onClick={handlePrint} >
-                   Print
-                   </button> */}
-                </div>
-              </div>
-              <button
-                   type="submit"
-                   style={{marginLeft: "50%",
-                  marginRight:"50%"}}
-                   className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                   onClick={handlePrint} >
-                   Print
-                   </button>
+                      return (
+                        <tr key={com._id} class="border-b">
+                          <td class="px-4 py-3 text-sm">{com.name}</td>
+                          <td class="px-4 py-3 text-sm">{com.number}</td>
+                          <td class="px-4 py-3 text-sm">{com.roomno}</td>
+                          <td class="px-4 py-3 text-sm">{com.block}</td>
+                          <td class="px-4 py-3 text-sm">{com.complain}</td>
+                          <td class="px-4 py-3 text-sm">{com.date}</td>
+                          <td class="px-4 py-3 text-sm">{com.compdetail}</td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
+        <button
+          type="submit"
+          class="block mx-auto mt-8 px-6 py-2 text-white bg-blue-700 rounded-md shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
+          onClick={handlePrint}
+        >
+          Print
+        </button>
       </div>
+    </div>
+  </div>
+</div>
+
     </>
   );
 };

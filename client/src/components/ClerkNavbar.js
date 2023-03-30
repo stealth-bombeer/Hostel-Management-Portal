@@ -15,30 +15,29 @@ const Navbar3 = () => {
   }
 
   return (
-    <header>
-      <div className="container">
-        <Link to="/clerk/home">
-          <h1>VJTI Hostel Portal-Admin</h1>
-        </Link>
-        <nav>
-          {clerk &&!user && !admin && (
-            <div>
-              <span>{clerk.email}</span>
-              <button onClick={handleClick}>Log out</button>
-              {/* <Link to="/admin/mer">Merit-List</Link> */}
-              <Link to="/signup">CreateUser</Link>
-            </div>
-            
-          )}
-          {/* {!admin && (
-            <div>
-              <Link to="/adminlogin">Login</Link>
-              <Link to="/adminsignup">Signup</Link>
-            </div>
-          )} */}
-        </nav>
-      </div>
-    </header>
+    <header className="bg-white-900 text-black">
+  <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <Link to="/clerk/home">
+      <h1 className="text-xl">VJTI Hostel Portal-Admin</h1>
+    </Link>
+    <nav className="flex">
+      {clerk && !user && !admin && (
+        <div className="flex items-center space-x-4">
+          <span className="hidden sm:inline">{clerk.email}</span>
+          <button className="border border-white py-1 px-2 rounded" onClick={handleClick}>Log out</button>
+          <Link to="/signup" className="border border-white py-1 px-2 rounded">Create User</Link>
+        </div>
+      )}
+      {/* {!admin && (
+        <div className="flex space-x-4">
+          <Link to="/adminlogin" className="border border-white py-1 px-2 rounded">Login</Link>
+          <Link to="/adminsignup" className="border border-white py-1 px-2 rounded">Signup</Link>
+        </div>
+      )} */}
+    </nav>
+  </div>
+</header>
+
   )
 }
 

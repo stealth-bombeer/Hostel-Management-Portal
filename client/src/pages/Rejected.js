@@ -91,99 +91,84 @@ const Rejected = () => {
     return ( <>
     
     <div class="print__section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              {/* <button onClick={handlePrint} className="print__button">
-                {" "}
-                Print{" "}
-              </button> */}
-              <div  className="card">
-                <div class="float__start">
-                  <h1 >Rejected Boys List</h1>
-                </div>
-                <hr />
-                <div class="float__infoss">
-                  
-                      <div className="App">
-                        <table className="center">
-                          <tr>
-                            <th>Name </th>
-                            <th>Merit No.</th>
-                            <th>Course</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                            <th>Reason</th>
-                          </tr>
-
- {isBoys  && bys.map((rej) => {
-                      return(
-                        <tr key={rej._id}>
-                          <td>{rej.name}</td>
-                          <td>{rej.merit}</td>
-                          <td>{rej.course}</td>
-                          <td>{rej.category}</td>  
-                          <td>{rej.gender}</td>  
-                          <td>{rej.message}</td>  
-                        </tr> 
-
-                        )  
-                       
-                       } )
-                 }
-                        </table>
-
-                        </div>   
-
-
-                </div>
-              </div>
-
-              <div  className="card">
-                <div class="float__start">
-                  <h1 >Rejected Girls List</h1>
-                </div>
-                <hr />
-                <div class="float__infoss">
-                  
-                      <div className="App">
-                        <table className="center">
-                          <tr>
-                            <th>Name </th>
-                            <th>Merit No.</th>
-                            <th>Course</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                            <th>Reason</th>
-                          </tr>
-               {setGls} { gls.map((rej) =>  {
-                      return(
-                        <tr key={rej._id}>
-                          <td>{rej.name}</td>
-                          <td>{rej.merit}</td>
-                          <td>{rej.course}</td>
-                          <td>{rej.category}</td>  
-                          <td>{rej.gender}</td>  
-                          <td>{rej.message}</td>  
-                        </tr> 
-
-                        )  
-                       
-                       } )
-                 }
-                        </table>
-
-                        </div>   
-
-
-                </div>
-              </div>
-
-
+  <div class="container mx-auto">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="float__start">
+            <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Rejected Boys List</h1>
+          </div>
+          
+          <div class="float__infoss">
+            <div class="App">
+              <table class="w-full table-fixed">
+                <thead>
+                  <tr class="text-center">
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Name</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Merit No.</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Course</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Category</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Gender</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Reason</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {isBoys && bys.map((rej) => (
+                    <tr key={rej._id}>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.name}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.merit}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.course}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.category}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.gender}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.message}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </div>
+
+        <div class="card">
+          <div class="float__start">
+            <h1 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl">Rejected Girls List</h1>
+          </div>
+          
+          <div class="float__infoss">
+            <div class="App">
+              <table class="w-full table-fixed">
+                <thead>
+                  <tr class="text-center">
+                  <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Name</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Merit No.</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Course</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Category</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Gender</th>
+                    <th class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">Reason</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {setGls}  {gls.map((rej) => (
+                    <tr key={rej._id}>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.name}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.merit}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.course}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.category}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.gender}</td>
+                      <td class="w-1/6 md:w-1/5 lg:w-1/6 xl:w-1/5">{rej.message}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+                    
+
     </>
   );
     

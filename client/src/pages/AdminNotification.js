@@ -36,31 +36,18 @@ const Notification = () => {
   
     return ( 
         <>
-{/* <div className="bgColour"> */}
-  {/* <div
-    
-    className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
-    role="alert"
-  > */}
-    {/* <span className="fontmedium">Notification alert! 
-</span> Behold!!!
-<br/> */}
-<br/>
-<div>
 
-{notifi && notifi.map((not) => (
-  
-  <div key={not._id}>
-    {/* <p >ANNOUNCEMENT!!!</p> */}
-  <div class="w3-panel w3-pale-green w3-border"style={{fontSize:"25px"}} >
-    {not.announcement}
-  </div>
-  <button className="Button1" onClick={()=>handleClick(not)}>delete</button>
-  <br/>
-  <br/>
-  
-  </div>))}
+<div class="mt-4">
+  {notifi && notifi.map((not) => (
+    <div key={not._id} class="mb-4">
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" style={{fontSize:"25px"}}>
+        {not.announcement}
+      </div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" onClick={()=>handleClick(not)}>delete</button>
     </div>
+  ))}
+</div>
+
 
   {/* </div> */}
   {/* <div className="cards">

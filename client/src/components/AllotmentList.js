@@ -56,39 +56,49 @@ const AllotmentList = () => {
       });
   }, []);
   return (
-    <div>
-      <table>
-        <tr>
-          <th> Names</th>
-          <th> Merit Rank</th>
-          <th> Branch</th>
+    <div class="overflow-x-auto">
+  <table class="table-auto min-w-full divide-y divide-gray-200 font-sans">
+    <thead>
+      <tr>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Names</th>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Merit Rank</th>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Branch</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {isBoys &&
+        bys.map((date) => (
+          <tr key={date._id}>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-left">{date.name}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-center">{date.merit}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-right">{date.branch}</td>
           </tr>
-       {isBoys  && bys.map((date) => (
+        ))}
+    </tbody>
+  </table>
+
+  <table class="table-auto min-w-full divide-y divide-gray-200 font-sans">
+    <thead>
+      <tr>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Names</th>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Merit Rank</th>
+        <th class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Branch</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      {gls.map((date) => (
         <tr key={date._id}>
-          
-          <td>{date.name}</td>
-          <td>{date.merit}</td>
-          <td>{date.branch}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-left">{date.name}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-center">{date.merit}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-right">{date.branch}</td>
         </tr>
       ))}
-    </table>
-    <table>
-    <tr>
-          <th> Names</th>
-          <th> Merit Rank</th>
-          <th> Branch</th>
-          </tr>
-      {setGls} { gls.map((date) => (
-       <tr key={date._id}>
-         
-         <td>{date.name}</td>
-         <td>{date.merit}</td>
-         <td>{date.branch}</td>
-       </tr>
-     ))}
-     </table>
-     
-   </div>
+    </tbody>
+  </table>
+</div>
+
+
+
    
   );
 };

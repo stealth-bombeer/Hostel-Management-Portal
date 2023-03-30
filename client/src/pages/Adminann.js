@@ -27,18 +27,24 @@ const Adminann = () => {
 
   return (
     <div className="announcement-box">
-      {/* <h2>Make an announcement</h2> */}
-      <form className="centerann" >
-      <h3 >Make an announcement</h3>
-        <textarea
-          required
-          rows="5" cols="80"
-          value={announcement}
-          onChange={(e) => setAnnouncement(e.target.value)}
-        ></textarea>
-        <button onClick={handleSubmit}>Done</button>
-      </form>
-    </div>
+  <form className="flex flex-col items-center">
+    <h3 className="text-lg font-medium mb-4">Make an announcement</h3>
+    <textarea
+      required
+      rows="5" 
+      className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+      value={announcement}
+      onChange={(e) => setAnnouncement(e.target.value)}
+    ></textarea>
+    <button 
+      className="px-4 py-2 mt-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+      onClick={handleSubmit}
+    >
+      Done
+    </button>
+  </form>
+</div>
+
   );
 }
  

@@ -73,7 +73,7 @@ const AllotmentList = () => {
     <div>
       <table>
         <tr>
-          <th> Names</th>
+          <th> Name</th>
           <th> Merit Rank</th>
           <th> Branch</th>
         </tr>

@@ -153,102 +153,83 @@ const Accepted = () => {
    </form>} */}
     
     <div class="print__section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              {/* <button onClick={handlePrint} className="print__button">
-                {" "}
-                Print{" "}
-              </button> */}
-              <div  className="card">
-                <div class="float__start">
-                  <h1 >Accepted Boys List</h1>
-                </div>
-                <hr />
-                <div class="float__infoss">
-                  
-                      <div className="App">
-                        <table className="center">
-                          <tr>
-                            <th>Name </th>
-                            <th>Merit No.</th>
-                            <th>Course</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                          </tr>
-
-                  {/* {accepted &&
-                    accepted.map((acc) => {
-                       */}
-                   {isBoys  && filteredDat1.map((acc) => {
-                //    {temp && filter.map((acc) => {
-                      return(
-                        <tr key={acc._id}>
-                          <td>{acc.name}</td>
-                          <td>{acc.merit}</td>
-                          <td>{acc.course}</td>
-                          <td>{acc.category}</td>  
-                          <td>{acc.gender}</td>  
-                        </tr> 
-
-                        )  
-                       
-                       } )
-                 }
-                        </table>
-
-                        </div>   
-
-
-                </div>
-              </div>
-
-              <div  className="card">
-                <div class="float__start">
-                  <h1 >Accepted Girls List</h1>
-                </div>
-                <hr />
-                <div class="float__infoss">
-                  
-                      <div className="App">
-                        <table className="center">
-                          <tr>
-                            <th>Name </th>
-                            <th>Merit No.</th>
-                            <th>Course</th>
-                            <th>Category</th>
-                            <th>Gender</th>
-                          </tr>
-
-                  {/* {accepted &&
-                    accepted.map((acc) => {
-                       */}
-      {setGls} { filteredDat.map((acc) =>  {
-                      return(
-                        <tr key={acc._id}>
-                          <td>{acc.name}</td>
-                          <td>{acc.merit}</td>
-                          <td>{acc.course}</td>
-                          <td>{acc.category}</td>  
-                          <td>{acc.gender}</td>  
-                        </tr> 
-
-                        )  
-                       
-                       } )
-                 }
-                        </table>
-
-                        </div>   
-
-
-                </div>
-              </div>
-
-            </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col">
+      <div class="my-4">
+        
+      </div>
+      <div class="my-4">
+        <div class="card bg-white shadow-md">
+          <div class="float__start">
+            <h1 class="text-2xl font-bold text-gray-700 py-2 px-4">Accepted Boys List</h1>
+          </div>
+          {/* <hr class="border-gray-300 my-2"> */}
+          <div class="float__infoss p-4">
+            <div class="App">
+              <table class="table-auto w-full">
+                <thead>
+                  <tr class="bg-gray-100">
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Merit No.</th>
+                    <th class="px-4 py-2">Course</th>
+                    <th class="px-4 py-2">Category</th>
+                    <th class="px-4 py-2">Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {isBoys && filteredDat1.map((acc) => (
+                    <tr key={acc._id}>
+                      <td class="border px-4 py-2">{acc.name}</td>
+                      <td class="border px-4 py-2">{acc.merit}</td>
+                      <td class="border px-4 py-2">{acc.course}</td>
+                      <td class="border px-4 py-2">{acc.category}</td>  
+                      <td class="border px-4 py-2">{acc.gender}</td>  
+                    </tr> 
+                  ))}
+                </tbody>
+              </table>
+            </div>   
           </div>
         </div>
       </div>
+      <div class="my-4">
+        <div class="card bg-white shadow-md">
+          <div class="float__start">
+            <h1 class="text-2xl font-bold text-gray-700 py-2 px-4">Accepted Girls List</h1>
+          </div>
+          {/* <hr class="border-gray-300 my-2"> */}
+          <div class="float__infoss p-4">
+            <div class="App">
+              <table class="table-auto w-full">
+                <thead>
+                  <tr class="bg-gray-100">
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Merit No.</th>
+                    <th class="px-4 py-2">Course</th>
+                    <th class="px-4 py-2">Category</th>
+                    <th class="px-4 py-2">Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {setGls && filteredDat.map((acc) => (
+                    <tr key={acc._id}>
+                       <td class="border px-4 py-2">{acc.name}</td>
+                      <td class="border px-4 py-2">{acc.merit}</td>
+                      <td class="border px-4 py-2">{acc.course}</td>
+                      <td class="border px-4 py-2">{acc.category}</td>  
+                      <td class="border px-4 py-2">{acc.gender}</td>  
+                      </tr> 
+                  ))}
+                </tbody>
+              </table>
+            </div>   
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+
     </>
   );
     

@@ -248,46 +248,7 @@ console.log(name);
       </div>
      
 
-{/* <>
-  <label
-    htmlFor="categories"
-    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-  >
-    Select your address
-  </label>
-  <div className="flex items-center mb-4">
-  
-    <input
-      id="default-radio-1"
-      type="radio"
-      defaultValue=""
-      name="default-radio"
-      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-    />
-    <label
-      htmlFor="default-radio-1"
-      className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    >
-      Mumbai
-    </label>
-  </div>
-  <div className="flex items-center">
-    <input
-      defaultChecked=""
-      id="default-radio-2"
-      type="radio"
-      defaultValue=""
-      name="default-radio"
-      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-    />
-    <label
-      htmlFor="default-radio-2"
-      className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-    >
-      Outside Mumbai
-    </label>
-  </div>
-</> */}
+
 <>
   <label
     htmlFor="branches"
@@ -361,48 +322,9 @@ console.log(name);
           required=""
         />
       </div>
-      {/* <div className="mb-3">
-        <div className="form-file custom-file">
-          <label
-            htmlFor="image"
-            className="form-file-text custom-file-label block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-          >
-            Choose Image...
-          </label>
-          <input
-            type="file"
-            className="form-file-input  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            id="image"
-            name="image"
-            placeholder="Choose Image"
-            required=""
-          />
-          <label for="image" class="btn btn-primary">Browse</label>/
-        </div>
-      </div> */}
+     
       <div className="flex items-start mb-6">
-        {/* <div className="flex items-center h-5">
-          <input
-            id="remember"
-            type="checkbox"
-            defaultValue=""
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-            required=""
-          />
-        </div> */}
-        {/* <label
-          htmlFor="remember"
-          className="ml-2 text-sm font-medium text-black-900 dark:text-black-300"
-        >
-          I agree with the{" "}
-          <a
-            href="#"
-            className="text-blue-600 hover:underline dark:text-blue-500"
-          >
-            terms and conditions
-          </a>
-          
-        </label> */}
+        
       </div>
       <button
         onSubmit={handleSubmit}

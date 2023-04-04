@@ -46,7 +46,7 @@ const Navbar = () => {
               //  user.alloted!=1 &&
                <Link to="/home">SY</Link>}
               {/* <Link to="/home">SY</Link> */}
-              <Link to="/pass">Pass</Link>
+              {/* <Link to="/pass">Pass</Link> */}
               <Link to="/rules">Hostel Rules</Link>
               
              

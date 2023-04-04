@@ -121,10 +121,10 @@ function App() {
               path="/complainclerk"
               element={user ? <ComplainClerk /> : <Navigate to="/login" />}
             />
-            <Route
+            {/* <Route
               path="/pass"
               element={user ? <Pass /> : <Navigate to="/login" />}
-            />
+            /> */}
             <Route
               path="/blocks"
               element={user ? <Blocks /> : <Navigate to="/login" />}

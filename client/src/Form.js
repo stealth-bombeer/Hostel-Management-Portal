@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import "./verify.css";
 const ImagePreview = ({ imageUrl }) => {
     const [showImage, setShowImage] = useState(false);
     return (
@@ -130,8 +131,8 @@ const App = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Documents</h1>
+        <div style={{margin:"auto"}}>
+            {/* <h1>Documents</h1>
             <table style={{ margin: "auto" }}>
                 <tr style={{ margin: "auto" }} >
                     <thead style={{ margin: "auto" }}>
@@ -151,7 +152,29 @@ const App = () => {
                     </td>
                     </tbody>
                 </tr>
-            </table>
+            </table> */}
+
+
+
+<h1>Documents</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Student Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {documents.map(document => (
+            <tr key={document._id} className="doc-content">
+                <td>
+                    <Link to={`/student-info/${document._id}`}>
+                        <h5 className="studentName">{document.name}</h5>
+                    </Link>
+                </td>
+            </tr>
+        ))}
+    </tbody>
+</table>
         </div>
     );
 };

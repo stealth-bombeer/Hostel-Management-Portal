@@ -1,0 +1,97 @@
+  /* Set overall font and background styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the table header */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #444;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Style the table */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Style the table rows */
+tr {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Style the table cells */
+th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: normal;
+    color: #444;
+}
+
+/* Style the table header cells */
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* Add hover effect to table rows */
+
+
+/* Add animation to table rows on hover */
+
+
+/* Animate table rows on hover */
+
+/* Add animation to table cells */
+
+
+
+
+/* Style the link */
+a {
+    color: #444;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Add hover effect to links */
+
+/* Make the table responsive */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+    th, td {
+        display: block;
+        width: 100%;
+    }
+    th {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 2px solid #ddd;
+    }
+    td {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    tr:hover td {
+        animation: none;
+        transform: none;
+    }
+}

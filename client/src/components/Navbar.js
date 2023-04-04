@@ -35,9 +35,9 @@ const Navbar = () => {
             <div>
               <span>{user.email}</span>
               <span>{user.year}</span>
-              <Link to="/fees">FeePayment</Link>
+              {/* <Link to="/fees">FeePayment</Link> */}
               <Link to="/viewrooms">SeeAllotedRooms</Link>
-              <Link to="/allot">Allotment-list</Link>
+
               {user.year != 2022 &&
                user.feesUpload!=1 && 
                <Link to="/feesupload">Uploads </Link>}
@@ -48,6 +48,7 @@ const Navbar = () => {
               {/* <Link to="/home">SY</Link> */}
               <Link to="/pass">Pass</Link>
               <Link to="/rules">Hostel Rules</Link>
+              
              
               <Link to="/Complains">Complaints</Link>
               <button onClick={handleClick}>Log out</button>

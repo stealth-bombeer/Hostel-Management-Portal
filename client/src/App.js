@@ -27,13 +27,14 @@ import Fees from "./context/Fees";
 import Complains from "./context/Complains";
 import ChatApp from "./components/ChatApp";
 import Chat from "./components/Chat";
-import AllotmentList from "./components/AllotmentList";
+
 import io from "socket.io-client";
 import Pass from "./pages/Pass";
 import Al from "./components/Al";
 import Notification from "./pages/Notification";
 import AdminNotification from "./pages/AdminNotification";
 import HomeMain from "./pages/HomeMain";
+
 import Rules from "./pages/Rules";
 import Blocks from "./pages/Blocks";
 import PdfUploader from "./Form";
@@ -94,16 +95,13 @@ function App() {
               path="/fees"
               element={user ? <Fees /> : <Navigate to="/login" />}
             />
-
+           
             <Route
               path="/feesupload"
               element={user ? <FeesUpload /> : <Navigate to="/login" />}
             />
 
-            <Route
-              path="/allot"
-              element={user ? <AllotmentList /> : <Navigate to="/login" />}
-            />
+            
             <Route
               path="/home"
               element={user ? <Home /> : <Navigate to="/login" />}

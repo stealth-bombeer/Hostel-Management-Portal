@@ -133,18 +133,18 @@ const App = () => {
         <div>
             <h1>Documents</h1>
             <table style={{ margin: "auto" }}>
-                <tr>
-                    <thead>
-                    <th>Student Name</th>
+                <tr style={{ margin: "auto" }} >
+                    <thead style={{ margin: "auto" }}>
+                    <th style={{ margin: "auto" }}>Student Name</th>
                     </thead>
                 </tr>
                 <tr>
                 <tbody>
-                    <td>
+                    <td style={{ margin: "auto" }}>
                         {documents.map(document => (
-                            <div key={document._id} className="doc-content">
+                            <div   key={document._id} className="doc-content">
                                 <Link to={`/student-info/${document._id}`}>
-                                    <h2 className="studentName">{document.name}</h2>
+                                    <h2  style={{ margin: "auto" }} className="studentName">{document.name}</h2>
                                 </Link>
                             </div>
                         ))}

@@ -455,6 +455,7 @@ body {
   font-family: "Poppins";
 }
 
+/* Default styles */
 header {
   background: #fff;
 }
@@ -473,6 +474,30 @@ header a {
   text-decoration: none;
 }
 
+/* Responsive styles */
+@media (max-width: 767px) {
+  header .container {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  header .logo {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  header .container {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  header .logo {
+    margin-bottom: 20px;
+  }
+}
 .pages {
   max-width: 1400px;
   padding: 20px;
@@ -558,27 +583,105 @@ input.error {
 }
 
 /* navbar */
-nav {
-  display: flex;
-  align-items: center;
+#credMenu li{
+  font-size: 1.5em;
+  padding: 5px 10px;
+  display: inline;
 }
 
-nav a,
-nav button {
-  margin-left: 10px;
+#menu {
+  z-index: 2;
 }
 
-nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-family: "Poppins";
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
   cursor: pointer;
-  font-size: 1em;
 }
 
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #DC052D;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(-4px);
+}
+
+#bar3 {
+  transform: translateY(4px);
+}
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+  height: 100vh;
+}
+
+.nav ul {
+  padding: 0 22px;
+}
+
+.nav li {
+  list-style: none;
+  padding: 12px 0;
+}
+
+.nav li a {
+  color: rgb(13, 13, 13);
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+.menu-bg,
+#menu {
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.menu-bg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  margin: 30px 0 20px 20px;
+  background: radial-gradient(circle, #DC052D, #DC052D);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.change {
+  display: block;
+  background-color: #FFFFFF;
+}
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+  opacity: 0;
+}
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(-60%, -30%);
+}
 /* auth forms */
 form.signup,
 form.login {

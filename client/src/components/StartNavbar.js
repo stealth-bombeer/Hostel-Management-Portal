@@ -3,6 +3,14 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useAuthContext2 } from "../hooks/useAuthContext2";
 import { useAuthContext3 } from "../hooks/useAuthContext3";
 
+const menuOnClick=()=>{
+    document.getElementById("menu-bar").classList.toggle("change");
+  document.getElementById("nav").classList.toggle("change");
+  document.getElementById("menu-bg").classList.toggle("change-bg");
+  document.getElementById("menu-bg").classList.toggle("change-opacity");
+  }
+
+
 const StartNavbar = () => {
    
   const { user } = useAuthContext();
@@ -24,20 +32,27 @@ const StartNavbar = () => {
         </a>
         
     
-    
-    <nav>
-
+    <div id="menu">
+  <div id="menu-bar" onClick={menuOnClick}>
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+  </div>
+    <nav className="nav" id="nav">
         {!user && !clerk && !admin && (
           <div>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/adminlogin">Admin-Login</Link>
-            <Link to="/clerklogin">Clerk-Login</Link>
-            <Link to="/adminsignup">Admin-Signup</Link>
-            <Link to="/clerksignup">CLerk-Signup</Link>
+            <ul>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/adminlogin">Admin-Login</Link></li>
+            <li><Link to="/clerklogin">Clerk-Login</Link></li>
+            <li><Link to="/adminsignup">Admin-Signup</Link></li>
+            <li><Link to="/clerksignup">CLerk-Signup</Link></li>
+            </ul>
           </div>
         )}
       </nav>
+      </div>
       </div>
       </header>);
 }

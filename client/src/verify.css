@@ -9,10 +9,10 @@
 /* Style the table header */
 h1 {
     text-align: center;
-    font-size: 36px;
+    font-size: 1.5em;
     color: #444;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
 }
 
 /* Style the table */

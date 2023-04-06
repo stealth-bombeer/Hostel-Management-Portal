@@ -3,6 +3,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useAuthContext2 } from "../hooks/useAuthContext2";
 import { useAuthContext3 } from "../hooks/useAuthContext3";
+import '@fortawesome/fontawesome-free/css/all.css';
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
@@ -11,6 +12,12 @@ const Navbar = () => {
   const handleClick = () => {
     logout();
   };
+  const menuOnClick=()=>{
+    document.getElementById("menu-bar").classList.toggle("change");
+  document.getElementById("nav").classList.toggle("change");
+  document.getElementById("menu-bg").classList.toggle("change-bg");
+  document.getElementById("menu-bg").classList.toggle("change-opacity");
+  }
   const handleChat = () => {};
 
   console.log(user,"inside authcontext");
@@ -29,33 +36,42 @@ const Navbar = () => {
             </Link>
           </span>
         </a>
-
-        <nav>
+        <div id="menu2">
+          <nav id="credMenu">
+            {user && !admin &&!clerk && (
+              <ul>
+             <li><i class="fas fa-envelope"></i> {user.email}</li>
+            <li><i class="fas fa-calendar-alt"></i> {user.year}</li>
+              </ul>
+            )}
+          </nav>
+        </div>
+        <div id="menu">
+        <div id="menu-bar" onClick={menuOnClick}>
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+        <nav className="nav" id="nav">
           {user && !admin && !clerk && (
             <div>
-              <span>{user.email}</span>
-              <span>{user.year}</span>
-              {/* <Link to="/fees">FeePayment</Link> */}
-              <Link to="/viewrooms">SeeAllotedRooms</Link>
-
-              {user.year != 2022 &&
+               <li><Link to="/viewrooms">SeeAllotedRooms</Link></li>
+               {user.year != 2022 &&
                user.feesUpload!=1 && 
-               <Link to="/feesupload">Uploads </Link>}
-              <Link to="/complainclerk">ComplainClerk</Link>
+               <li><Link to="/feesupload">Uploads </Link></li>}
+                <li><Link to="/complainclerk">ComplainClerk</Link></li>
               {user.year != 2022 && user.feesUpload== 1 &&
               //  user.alloted!=1 &&
-               <Link to="/home">SY</Link>}
-              {/* <Link to="/home">SY</Link> */}
-              {/* <Link to="/pass">Pass</Link> */}
-              <Link to="/rules">Hostel Rules</Link>
-              
-             
-              <Link to="/Complains">Complaints</Link>
+               <li><Link to="/home">SY</Link></li>}
+               {/* <Link to="/home">SY</Link> */}
+              <li><Link to="/pass">Pass</Link></li>
+              <li><Link to="/rules">Hostel Rules</Link></li>
+               <li><Link to="/Complains">Complaints</Link></li>
               <button onClick={handleClick}>Log out</button>
             </div>
           )}
         </nav>
-
+</div>
         
       </div>
     </header>

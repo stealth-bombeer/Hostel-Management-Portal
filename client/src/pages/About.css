@@ -548,9 +548,9 @@ footer .newsletter i {
     .dots {
         display: none;
     }
-    header {
+    /* header {
         height: calc(100vh - 10px);
-    }
+    } */
     header nav .logo {
         padding-left: 0;
     }

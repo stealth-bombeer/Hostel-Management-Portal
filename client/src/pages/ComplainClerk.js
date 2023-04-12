@@ -38,7 +38,7 @@ const ComplainClerk = () => {
     }).slice(0,2)
     const details = {  name,number,block, roomno, complain ,date,compdetail};
 
-    const response = await fetch("/api/workouts/complainclerk", {
+    const response = await fetch("/api/user/complainclerk", {
       method: "POST",
       body: JSON.stringify(details),
       headers: {

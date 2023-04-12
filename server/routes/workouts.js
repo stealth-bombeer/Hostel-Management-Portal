@@ -1,35 +1,33 @@
-const express = require("express");
-const {
-  getBlock,
+// const express = require("express");
+// const {
+  
+//   createcomplain,
+//   createAlloted
+//   //updateName,
+// } = require("../controllers/workoutController");
+// const requireAuth = require("../middleware/requireAuth");
 
-  createBlock,
-  createcomplain,
-  createAlloted
-  //updateName,
-} = require("../controllers/workoutController");
-const requireAuth = require("../middleware/requireAuth");
+// const router = express.Router();
 
-const router = express.Router();
+// // require auth for all workout routes
+// router.use(requireAuth);
 
-// require auth for all workout routes
-router.use(requireAuth);
+// // GET all workouts
+// router.get("/home", getBlock);
 
-// GET all workouts
-router.get("/home", getBlock);
+// //GET a single workout
+// // router.get('/:id', getWorkout)
 
-//GET a single workout
-// router.get('/:id', getWorkout)
+// // POST a new workout
+// router.put("/home", createBlock);
+// //router.post("/home", createAlloted);
 
-// POST a new workout
-router.put("/home", createBlock);
-//router.post("/home", createAlloted);
 
-router.post("/complainclerk",createcomplain)
 
-// DELETE a workout
-// router.delete('/:id', deleteWorkout)
+// // DELETE a workout
+// // router.delete('/:id', deleteWorkout)
 
-// UPDATE a workout
-//router.patch("/home:id", updateName);
+// // UPDATE a workout
+// //router.patch("/home:id", updateName);
 
-module.exports = router;
+// module.exports = router;

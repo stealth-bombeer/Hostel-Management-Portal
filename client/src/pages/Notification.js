@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-
+import {useAuthContext} from '../hooks/useAuthContext';
 const Notification = () => {
-
+const {user}=useAuthContext();
   const[ notifi, setNotifi]= useState("")
   useEffect(() => {
     const fetchNotifi = async () => {
-      const response = await fetch('http://localhost:4000/api/user/notification')
+      const response = await fetch('http://localhost:4000/api/user/notification', 
+      {headers: {'Authorization': `Bearer ${user.token}`}})
       const json = await response.json()
   
       if (response.ok) {

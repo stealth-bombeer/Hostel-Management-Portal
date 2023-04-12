@@ -1,65 +1,77 @@
 import { useEffect, useState } from "react";
-
+import { useAuthContext2 } from "../hooks/useAuthContext2";
 const Notification = () => {
-
-  const[ notifi, setNotifi]= useState("")
+  const { admin } = useAuthContext2();
+  const [notifi, setNotifi] = useState("");
   useEffect(() => {
     const fetchNotifi = async () => {
-      const response = await fetch('http://localhost:4000/api/user/notification')
-      const json = await response.json()
-  
+      const response = await fetch(
+        "http://localhost:4000/api/admin/notification",
+        {
+          headers: { Authorization: `Bearer ${admin.token}` },
+        }
+      );
+
+      const json = await response.json();
+
       if (response.ok) {
-        setNotifi(json)
-        console.log(notifi)
+        setNotifi(json);
+        console.log(notifi);
       }
-    }
-    fetchNotifi()
-  },[])
+    };
+    fetchNotifi();
+  }, []);
   const handleClick = async (not) => {
-      console.log("Inside handleclick",not)
-    const response = await fetch('/api/admin/delnotification/' + not._id, {
-      method: 'DELETE'
-    })
-    const json = await response.json()
+    console.log("Inside handleclick", not);
+    const response = await fetch(
+      "/api/admin/delnotification/" + not._id,
+      {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${admin.token}` },
+      }
+
+     
+    
+    );
+    const json = await response.json();
 
     if (response.ok) {
-        alert("Success");
-        window.location.reload(true);
-    //   dispatch({type: 'DELETE_WORKOUT', payload: json})
+      alert("Success");
+      window.location.reload(true);
+      //   dispatch({type: 'DELETE_WORKOUT', payload: json})
+    } else {
+      alert(json.error);
     }
-    else
-    {
-        alert(json.error)
-    }
-  }
-  
-    return ( 
-        <>
-{/* <div className="bgColour"> */}
-  <div
-    
-    className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
-    role="alert"
-  >
-    <span className="fontmedium">Notification alert! 
-</span> Behold!!!
-<br/>
-<br/>
-<div>
-{notifi && notifi.map((not) => (
-  <div key={not._id}>
-  <div >
-    {not.announcement}
-  </div>
-  <button className="material-symbols-outlined" onClick={()=>handleClick(not)}>delete</button>
-  <br/>
-  <br/>
-  
-  </div>))}
-    </div>
+  };
 
-  </div>
-  {/* <div className="cards">
+  return (
+    <>
+      {/* <div className="bgColour"> */}
+      <div
+        className="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-gray-800 dark:text-blue-400"
+        role="alert"
+      >
+        <span className="fontmedium">Notification alert!</span> Behold!!!
+        <br />
+        <br />
+        <div>
+          {notifi &&
+            notifi.map((not) => (
+              <div key={not._id}>
+                <div>{not.announcement}</div>
+                <button
+                  className="material-symbols-outlined"
+                  onClick={() => handleClick(not)}
+                >
+                  delete
+                </button>
+                <br />
+                <br />
+              </div>
+            ))}
+        </div>
+      </div>
+      {/* <div className="cards">
   <div className="mohatsavcard1"> 
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
@@ -193,10 +205,8 @@ DAY 9 - Navami
   </div>
 </div>
    */}
-  
-</>
+    </>
+  );
+};
 
-     );
-}
- 
 export default Notification;

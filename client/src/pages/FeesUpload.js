@@ -11,12 +11,16 @@ const FeesUpload = () => {
   const fileType = (file) => {
     console.log(file);
     let name = file.name;
-    console.log(name)
+    console.log(name);
     let type = name.split(".");
     if (type[1] !== "pdf") {
       console.log("inside");
-      {alert("The input file should be a pdf :>")}
-      {window.location.reload(false);}
+      {
+        alert("The input file should be a pdf :>");
+      }
+      {
+        window.location.reload(false);
+      }
     }
   };
 
@@ -60,7 +64,7 @@ const FeesUpload = () => {
     //   }
     //   return;
     // }
-
+    console.log("inside FeesUploads", feesReceipt, prevAllot);
     console.log("Submitted th fees and allotment receipt");
     await uploads(feesReceipt, prevAllot);
   };
@@ -118,15 +122,12 @@ const FeesUpload = () => {
             />
             <label for="image" class="btn btn-primary"></label>
           </div>
-<div>
-  err:{err}
-  </div>
+          <div>err:{err}</div>
           <button
             onSubmit={handleSubmit}
             type="submit"
-            disabled= {isLoading }
+            disabled={isLoading}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            
           >
             Submit
           </button>

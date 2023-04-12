@@ -1,71 +1,85 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Fragment } from 'react';
-
+import { Fragment } from "react";
+import { useAuthContext2 } from "./hooks/useAuthContext2";
 
 const ImagePreview = ({ imageUrl }) => {
-    const [showImage, setShowImage] = useState(false);
-    return (
+  const [showImage, setShowImage] = useState(false);
+  return (
+    <div>
+      <button
+        onClick={() => setShowImage(!showImage)}
+        className="preview-button"
+      >
+        Preview
+      </button>
+      {showImage && (
         <div>
-            <button onClick={() => setShowImage(!showImage)} className="preview-button">Preview</button>
-            {showImage && (
-                <div>
-                    <img src={imageUrl} alt="Preview" />
-                    {/* <button onClick={() => setShowImage(false)}>Close</button> */}
-                </div>
-            )}
+          <img src={imageUrl} alt="Preview" />
+          {/* <button onClick={() => setShowImage(false)}>Close</button> */}
         </div>
-    );
+      )}
+    </div>
+  );
 };
 const SeniorStudentInfo = () => {
-    const [error, setError] = useState('')
-    const [feeReceipt, setFeeReceipt] = useState(null);
-    const [Allot, setAllot] = useState(null);
-    const { id } = useParams();
-    console.log(`id1: ${id}`);
-    const [numPages, setNumPages] = useState(null);
-    const [documents, setDocuments] = useState([]);
-    useEffect(() => {
-        const fetchDocuments = async () => {
-            const response = await axios.get(`http://127.0.0.1:4000/get-pdfs`);
-            setDocuments(response.data);
-        };
+  const { admin } = useAuthContext2();
+  const [error, setError] = useState("");
+  const [feeReceipt, setFeeReceipt] = useState(null);
+  const [Allot, setAllot] = useState(null);
+  const { id } = useParams();
+  console.log(`id1: ${id}`);
+  const [numPages, setNumPages] = useState(null);
+  const [documents, setDocuments] = useState([]);
+  useEffect(() => {
+    const config = {
+      headers: { Authorization: `Bearer ${admin.token}` },
+    };
+    const fetchDocuments = async () => {
+      const response = await axios.get(
+        `http://localhost:4000/api/admin/get-pdfs`
+        ,config
+      );
+      setDocuments(response.data);
+    };
 
-        fetchDocuments();
-    }, []);
-    const documentWithId2 = documents.find((document) => document._id === id)
-    if (documentWithId2) {
-
-
-        return (
-            <div>
-                <h2 className="studentName">{documentWithId2.name}</h2>
-                <div className="fragment">
-                    <Fragment>
-                        <embed src={documentWithId2['feesReceipt']['url']} type="application/pdf"
-                            width="100%"
-                            height="600px" />
-                    </Fragment>
-                    <h1>Lorem</h1>
-                    <Fragment>
-                        <embed src={documentWithId2['prevAllot']['url']} type="application/pdf"
-                            width="100%"
-                            height="600px" />
-
-                    </Fragment>
-
-                </div>
-                <label>
-                    Message:
-                    <textarea value={error} onChange={(e) => setError(e.target.value)} />
-                </label>
-            </div>
-        )
-    }
+    fetchDocuments();
+  }, []);
+  const documentWithId2 = documents.find((document) => document._id === id);
+  if (documentWithId2) {
     return (
-        <div>
-            {/* {documents.map(document => (
+      <div>
+        <h2 className="studentName">{documentWithId2.name}</h2>
+        <div className="fragment">
+          <Fragment>
+            <embed
+              src={documentWithId2["feesReceipt"]["url"]}
+              type="application/pdf"
+              width="100%"
+              height="600px"
+            />
+          </Fragment>
+          <h1>Lorem</h1>
+          <Fragment>
+            <embed
+              src={documentWithId2["prevAllot"]["url"]}
+              type="application/pdf"
+              width="100%"
+              height="600px"
+            />
+          </Fragment>
+        </div>
+        <label>
+          Message:
+          <textarea value={error} onChange={(e) => setError(e.target.value)} />
+        </label>
+      </div>
+    );
+  }
+  return (
+    <div>
+      {/* {documents.map(document => (
                 <div key={document._id} className="doc-content">
                     <h2 className="studentName"> Student Name: {document.name}</h2>
                     <p className="fields">Course: {document.course}</p>
@@ -93,8 +107,8 @@ const SeniorStudentInfo = () => {
                     </div>
                 </div>
             ))} */}
-        </div>
-    );
-}
+    </div>
+  );
+};
 
 export default SeniorStudentInfo;

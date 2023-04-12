@@ -14,14 +14,17 @@ export const useFeesUpload = () => {
   const uploads = async (feesReceipt, prevAllot) => {
     setIsLoading(true);
     setError(null);
+    console.log(feesReceipt, prevAllot,"inide usefeesupload");
     const response = await fetch("/api/user/feesupload", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {"Content-Type": "application/json",'Authorization': `Bearer ${user.token}`},
+      
       body: JSON.stringify({
         name: user.name,
         feesReceipt,
         prevAllot,
-      }),
+      }
+      ),
     });
     console.log(response);
     const json = await response.json();

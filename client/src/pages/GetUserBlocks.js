@@ -1,26 +1,27 @@
 import { useEffect, useState } from "react";
-import { useAuthContext2 } from "../hooks/useAuthContext2";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const AdminHome = () => {
+const GetUserBlocks = () => {
   const [dat, setDat] = useState([]);
-  const { admin } = useAuthContext2();
+  const { user } = useAuthContext();
   const [selectedBlockNo, setSelectedBlockNo] = useState("");
-
+console.log("inside getuserblocks ",user);
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/admin/ad", {
-        headers: { Authorization: `Bearer ${admin.token}` },
+      const response = await fetch("/api/user/ad", {
+        headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();
 
       if (response.ok) {
         console.log(json);
         setDat([...json]);
+        console.log("inside getblocks");
       }
     };
 
     fetchWorkouts();
-  }, []);
+  }, [selectedBlockNo]);
 
   // const handleSelectRoom = (students) => {
   //   setSelectedBlockNo(students);
@@ -75,4 +76,4 @@ const AdminHome = () => {
   );
 };
 
-export default AdminHome;
+export default GetUserBlocks;

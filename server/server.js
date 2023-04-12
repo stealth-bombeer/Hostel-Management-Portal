@@ -16,7 +16,6 @@ const Complain = require('./models/complainModel')
 // const userRoutes = require("./routes/user");
 const http = require("http");
 const cors = require("cors");
-const { Server } = require("socket.io");
 const fileUpload = require("express-fileupload");
 require("./models/userModel");
 // app.use(cors());
@@ -54,11 +53,11 @@ cron.schedule('0 0 1 * *', async () => {
 });
 // routes
 app.use('/', docRoutes);
-app.use("/api/workouts", workoutRoutes);
+// app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/clerk", clerkRoutes);
-app.use("/api/workouts", workoutRoutes);
+// app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
 ``;
 
@@ -75,41 +74,41 @@ mongoose
     console.log(error);
   });
 
-const io = new Server(server, {
-  cors: {
-    //which url will be calling with our server i.e our react web
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     //which url will be calling with our server i.e our react web
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST"],
+//   },
+// });
 
-io.on("connection", (socket) => {
-  //when someone connects(evrryone will have differnet socket id)to the server we console out socket id
-  console.log(`User connected ${socket.id}`);
+// io.on("connection", (socket) => {
+//   //when someone connects(evrryone will have differnet socket id)to the server we console out socket id
+//   console.log(`User connected ${socket.id}`);
 
-  //we want to join a room with room passed as a data
-  socket.on("join_room", (data) => {
-    socket.join(data);
-    console.log(`user with id :${socket.id} joined room:${data}`);
-  });
-  socket.on("send_message", (data) => {
-    console.log(data);
+//   //we want to join a room with room passed as a data
+//   socket.on("join_room", (data) => {
+//     socket.join(data);
+//     console.log(`user with id :${socket.id} joined room:${data}`);
+//   });
+//   socket.on("send_message", (data) => {
+//     console.log(data);
 
-    //emit data to only connected room peeps
-    io.in("0")
-      .fetchSockets()
-      .then((data) => {
-        console.log(data);
-        console.log(data.length);
-      });
-    socket.to(data.room).emit("receive_message", data);
-  });
-  socket.on("disconnect", () => {
-    // socket.leave(0);
-    console.log("user disconnected", socket.id);
-    io.disconnectSockets();
-  });
-});
+//     //emit data to only connected room peeps
+//     io.in("0")
+//       .fetchSockets()
+//       .then((data) => {
+//         console.log(data);
+//         console.log(data.length);
+//       });
+//     socket.to(data.room).emit("receive_message", data);
+//   });
+//   socket.on("disconnect", () => {
+//     // socket.leave(0);
+//     console.log("user disconnected", socket.id);
+//     io.disconnectSockets();
+//   });
+// });
 const User = mongoose.model("User");
 app.get("/allotment", (req, res) => {
   User.find((err, val) => {

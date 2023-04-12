@@ -8,7 +8,7 @@ const router = express.Router()
 const upload = require("../models/feesAllotmentModel")
 
 
-router.get("/api/collections", (req, res) => {
+router.get("/collections", (req, res) => {
     register.find({})
         .then(collections => res.json(collections))
         .catch(err => res.status(400).json("Error: " + err));
@@ -20,14 +20,14 @@ router.get("/get-pdfs", (req, res) => {
         .catch(err => res.status(400).json("Error: " + err));
 })
 
-router.get("/api/collections/:id", (req, res) => {
+router.get("/collections/:id", (req, res) => {
     console.log(`id: ${req.body}`)
     register.find({})
         .then(collections => res.json(collections))
         .catch(err => res.status(400).json("Error: " + err));
 });
 
-router.post("/api/submitAccepted", async (req, res) => {
+router.post("/submitAccepted", async (req, res) => {
     console.log(`body: ${req.body}`)
 
     try {
@@ -75,7 +75,7 @@ router.post("/api/submitAccepted", async (req, res) => {
 });
 
 
-router.delete('/api/delete/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const deletedDoc = await register.findByIdAndDelete(req.params.id);
         if (!deletedDoc) {
@@ -88,7 +88,7 @@ router.delete('/api/delete/:id', async (req, res) => {
 });
 
 
-router.post("/api/submitRejected", async (req, res) => {
+router.post("/submitRejected", async (req, res) => {
 
     try {
         const document = new Rejected({

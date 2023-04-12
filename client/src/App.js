@@ -7,11 +7,8 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminSignup from "./pages/AdminSignup";
 import ClerkLogin from "./pages/ClerkLogin";
 import ClerkSignup from "./pages/ClerkSignup";
-// pages & components
 import AdminNavbar from "./components/AdminNavbar";
-import Home from "./pages/Home";
 import Print from "./pages/Print";
-
 import Login from "./pages/Login";
 import ComplainClerk from "./pages/ComplainClerk";
 import Register from "./pages/Register";
@@ -24,17 +21,13 @@ import Navbar from "./components/Navbar";
 import ClerkNavbar from "./components/ClerkNavbar";
 import Fees from "./context/Fees";
 import Complains from "./context/Complains";
-import ChatApp from "./components/ChatApp";
-import Chat from "./components/Chat";
-import AllotmentList from "./components/AllotmentList";
-import io from "socket.io-client";
+import SelectBlocks from "./pages/SelectBlocks";
 import Pass from "./pages/Pass";
-import Al from "./components/Al";
 import Notification from "./pages/Notification";
 import AdminNotification from "./pages/AdminNotification";
 import HomeMain from "./pages/HomeMain";
 import Rules from "./pages/Rules";
-import Blocks from "./pages/Blocks";
+import GetUserBlocks from "./pages/GetUserBlocks";
 import PdfUploader from "./Form";
 import StudentInfo from "./studentInfo";
 import StartNavbar from "./components/StartNavbar";
@@ -45,7 +38,7 @@ import Rejected from "./pages/Rejected";
 import PdfViewer from "./seniorForm";
 import SeniorStudentInfo from "./seniorStudentInfo";
 
-const socket = io.connect("http://localhost:4000");
+
 
 function App() {
   const { user } = useAuthContext();
@@ -98,20 +91,9 @@ function App() {
               path="/feesupload"
               element={user ? <FeesUpload /> : <Navigate to="/login" />}
             />
-
-            <Route
-              path="/allot"
-              element={user ? <AllotmentList /> : <Navigate to="/login" />}
-            />
             <Route
               path="/home"
-              element={user ? <Home /> : <Navigate to="/login" />}
-            />
-            <Route
-              path="/chatapp"
-              element={
-                user ? <ChatApp socket={socket} /> : <Navigate to="/login" />
-              }
+              element={user ? <SelectBlocks /> : <Navigate to="/login" />}
             />
 
             <Route
@@ -128,16 +110,20 @@ function App() {
             />
             <Route
               path="/blocks"
-              element={user ? <Blocks /> : <Navigate to="/login" />}
+              element={ user ? <GetUserBlocks /> 
+              : <Navigate to="/login" />
+            }
             />
             <Route
               path="/notification"
               element={user ? <Notification /> : <Navigate to="/login" />}
             />
 
-<Route
+            <Route
               path="/adminnotification"
-              element={ admin?<AdminNotification />:<Navigate to="/adminlogin" /> }
+              element={
+                admin ? <AdminNotification /> : <Navigate to="/adminlogin" />
+              }
             />
             <Route
               path="/admin/mer"
@@ -155,7 +141,10 @@ function App() {
               path="/admin/rej"
               element={admin ? <Rejected /> : <Navigate to="/adminlogin" />}
             />
-
+            <Route
+              path="/blocks"
+              element={user ? <GetUserBlocks /> : <Navigate to="/login" />}
+            />
             <Route
               path="/rules"
               element={user ? <Rules /> : <Navigate to="/login" />}
@@ -190,12 +179,16 @@ function App() {
             ></Route>
             <Route path="/student-info/:id" element={<StudentInfo />}></Route>
             <Route path="/verify-senior" element={<PdfViewer />}></Route>
-            <Route path="/senior-student-info/:id" element={<SeniorStudentInfo />}></Route>
+            <Route
+              path="/senior-student-info/:id"
+              element={<SeniorStudentInfo />}
+            ></Route>
           </Routes>
         </div>
       </BrowserRouter>
     </div>
   );
 }
+//
 
 export default App;

@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const Register = require("../models/registerModel");
-const FeesAllotment=require('../models/feesAllotmentModel')
+const FeesAllotment = require("../models/feesAllotmentModel");
 const { resetPassword } = require("../utils/emailTemplates");
 const { sendEmail } = require("../utils/sendEmail");
 const jwt = require("jsonwebtoken");
@@ -29,8 +29,10 @@ const loginUser = async (req, res) => {
     const name = user.name;
     const number = user.number;
     const alloted = user.alloted;
-    const feesUpload=user.feesUpload;
-    res.status(200).json({ name, number, year, gender, email, token, alloted,feesUpload});
+    const feesUpload = user.feesUpload;
+    res
+      .status(200)
+      .json({ name, number, year, gender, email, token, alloted, feesUpload });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -38,27 +40,31 @@ const loginUser = async (req, res) => {
 
 // signup a user
 const feesUpload = async (req, res) => {
-  const { name,feesReceipt, prevAllot } = req.body;
-  console.log("inside feesUpload userctrller");
+  const { name, feesReceipt, prevAllot } = req.body;
 
-  try 
-  {
+  console.log("inside feesUpload userctrller",req.body);
 
+  try {
     var options = {
       validation: {
-        'allowedExts': ['pdf'],
-        'allowedMimeTypes': ['text/plain', 'application/msword', 'application/x-pdf', 'application/pdf']
-      }
-    }
+        allowedExts: ["pdf"],
+        allowedMimeTypes: [
+          "text/plain",
+          "application/msword",
+          "application/x-pdf",
+          "application/pdf",
+        ],
+      },
+    };
     const feesReceiptResult = await cloudinary.uploader.upload(feesReceipt, {
       folder: "FeesReceipt",
     });
- 
+
     const prevAllotmentResult = await cloudinary.uploader.upload(prevAllot, {
       folder: "PrevAllotment",
     });
 
-    const upload=await FeesAllotment.upload({
+    const upload = await FeesAllotment.upload({
       name,
       feesReceipt: {
         public_id: feesReceiptResult.public_id,
@@ -66,21 +72,23 @@ const feesUpload = async (req, res) => {
       },
       prevAllot: {
         public_id: prevAllotmentResult.public_id,
-        url:prevAllotmentResult.secure_url,
+        url: prevAllotmentResult.secure_url,
+      },
+    });
+
+    const updateUser = await User.findOneAndUpdate(
+      { name },
+      { feesUpload: "1" },
+      {
+        returnOriginal: false,
       }
-    })
-
-const updateUser=await User.findOneAndUpdate({name},{feesUpload:'1'},{
-  returnOriginal:false
-})
-  console.log('FInd ',updateUser);  
-  res.status(200).json({upload})
-  } 
-  catch (error) {
-    console.log("Inside feesupload usectrl",error.message)
-    res.status(400).json({error:error.message})
+    );
+    console.log("FInd ", updateUser);
+    res.status(200).json({ upload });
+  } catch (error) {
+    console.log("Inside feesupload usectrl", error.message);
+    res.status(400).json({ error: error.message });
   }
-
 };
 
 const registerUser = async (req, res) => {

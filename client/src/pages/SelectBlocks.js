@@ -3,10 +3,7 @@ import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
-import WorkoutDetails from "../components/WorkoutDetails";
-import WorkoutForm from "../components/WorkoutForm";
-
-const Home = () => {
+const SelectBlocks = () => {
   const { workouts, dispatch } = useWorkoutsContext();
   const { user } = useAuthContext();
   const [BlockNo, setBlockNo] = useState(" ");
@@ -22,10 +19,10 @@ const Home = () => {
   const handleSelect = async (floor, block, room) => {
     const Email = user.name;
     const roomDetails = { BlockNo: block, FloorNo: floor, Email, RoomNo: room };
-      setLoading(true);
+    setLoading(true);
     console.log(roomDetails);
 
-    const response = await fetch("/api/workouts/home", {
+    const response = await fetch("/api/user/home", {
       method: "PUT",
       body: JSON.stringify(roomDetails),
       headers: {
@@ -40,10 +37,9 @@ const Home = () => {
       logout();
     }
     if (!response.ok) {
-      // if (json.error == "Full") 
+      // if (json.error == "Full")
       alert(json.error);
       window.location.reload(true);
-      
     }
   };
   const handleSubmit = async (e) => {
@@ -66,7 +62,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts/home", {
+      const response = await fetch("/api/user/home", {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();
@@ -82,14 +78,6 @@ const Home = () => {
   }, [user]);
 
   return (
-    // <div className="home">
-    //   <div className="workouts">
-    //     {workouts && workouts.map((workout) => (
-    //       <WorkoutDetails key={workout._id} workout={workout} />
-    //     ))}
-    //   </div>
-    //   <WorkoutForm />
-    // </div>
 
     <div className="relative w-full mx-auto">
       {!loading && (
@@ -137,7 +125,7 @@ const Home = () => {
             </div>
             <div className="mt-4">
               <button
-              disabled={loading}
+                disabled={loading}
                 onClick={() =>
                   handleSelect(date.FloorNo, date.BlockNo, date.RoomNo)
                 }
@@ -149,11 +137,14 @@ const Home = () => {
           </div>
         ))}
       </div>
-      {loading &&<div> <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span></div>}
+      {loading && (
+        <div>
+          {" "}
+          <i class="fa fa-circle-o-notch fa-spin"></i> <span>Loading </span>
+        </div>
+      )}
     </div>
-        
-
   );
 };
 
-export default Home;
+export default SelectBlocks;

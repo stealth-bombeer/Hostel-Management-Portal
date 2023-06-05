@@ -3,7 +3,7 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useAuthContext2 } from "../hooks/useAuthContext2";
 import { useAuthContext3 } from "../hooks/useAuthContext3";
-import '@fortawesome/fontawesome-free/css/all.css';
+// import '@fortawesome/fontawesome-free/css/all.css';
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();

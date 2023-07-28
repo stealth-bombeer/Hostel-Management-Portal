@@ -2,7 +2,7 @@
 
 <div align="center">
    <strong>VJT-HACK-23</strong> <br>
-  - Team Codding Warriors <br> <br>
+  - Team Coding Warriors <br> <br>
   <a href="https://github.com/stealth-bombeer/Hostel-Management-Portal/stargazers"><img alt="GitHub issues" src="https://img.shields.io/github/stars/stealth-bombeer/Hostel-Management-Portal"></a>
   <a href="https://github.com/stealth-bombeer/Hostel-Management-Portal/network/members"><img alt="GitHub stars" src="https://img.shields.io/github/forks/stealth-bombeer/Hostel-Management-Portal"></a>
   <a href="https://github.com/stealth-bombeer/Hostel-Management-Portal/issues"><img alt="GitHub contributors" src="https://img.shields.io/github/issues/stealth-bombeer/Hostel-Management-Portal"></a>
